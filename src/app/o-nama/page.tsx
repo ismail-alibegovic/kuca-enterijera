@@ -69,7 +69,7 @@ export default function AboutPage() {
             <ol className="mt-12 border-t border-paper/25">
               {categories.map((c) => (
                 <li key={c.slug} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-paper/15 py-4 md:grid-cols-[3rem_1fr_1fr]">
-                  <span className="t-index text-paper/50">{c.index}</span>
+                  <span className="t-index text-paper/65">{c.index}</span>
                   <span className="t-h3">{c.name}</span>
                   <span className="t-small col-start-2 text-paper/60 md:col-start-auto">{c.kicker}</span>
                 </li>

@@ -38,7 +38,7 @@ export function LogoMark({
 /** The small leaf that replaces the acute accent on Ć, a nod to the original wordmark. */
 function AccentLeaf() {
   return (
-    <svg viewBox="0 0 10 10" aria-hidden className="absolute left-1/2 top-[-0.52em] h-[0.42em] w-[0.42em] -translate-x-[15%]">
+    <svg viewBox="0 0 10 10" aria-hidden className="absolute left-[calc(50%-0.1em)] top-[-0.34em] h-[0.4em] w-[0.4em] -translate-x-[40%]">
       <path d="M1 9 A8 8 0 0 1 9 1 A8 8 0 0 1 1 9 Z" fill="currentColor" />
     </svg>
   );

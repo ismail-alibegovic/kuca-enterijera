@@ -49,7 +49,6 @@ export function Photo({
         sizes={sizes}
         quality={70}
         preload={preload}
-        placeholder="blur"
         className={`object-cover ${imgClassName}`}
         style={{ objectPosition: focus ?? m.focus ?? "50% 50%" }}
       />

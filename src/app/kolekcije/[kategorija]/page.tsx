@@ -25,6 +25,12 @@ import {
 import { media } from "@/content/media";
 import { pageMetadata } from "@/lib/seo";
 
+/**
+ * Every real slug is prerendered via generateStaticParams, so navigation to them is instant.
+ * Unknown slugs may block so that notFound() can return a real 404 status (no streamed 200 shell).
+ */
+export const instant = false;
+
 export function generateStaticParams() {
   return categories.map((c) => ({ kategorija: c.slug }));
 }
@@ -68,7 +74,7 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
         <div className="grid-12 mt-10 gap-y-10 md:mt-14">
           <div className="col-span-4 flex flex-col md:col-span-6">
             <p className="t-label flex items-center gap-3" suppressHydrationWarning data-reveal="fade">
-              <span className="t-index tracking-normal opacity-60">Nº {c.index}</span>
+              <span className="t-index tracking-normal text-mute">Nº {c.index}</span>
               <span aria-hidden className="h-px w-8 bg-current opacity-40" />
               {c.kicker}
             </p>

@@ -55,7 +55,6 @@ export function Gallery({ images, name }: { images: MediaKey[]; name: string }) 
               sizes="(min-width: 1024px) 58vw, 100vw"
               quality={80}
               preload={i === 0}
-              placeholder="blur"
               className={`object-cover transition-[opacity,scale] duration-[1200ms] ease-[var(--ease-architect)] group-hover:scale-[1.02] ${
                 i === active ? "opacity-100" : "opacity-0"
               }`}

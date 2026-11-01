@@ -58,7 +58,7 @@ export function MaterialStory() {
       <div className="shell relative pt-24 md:pt-36">
         <div className="grid-12 gap-y-6">
           <p className="t-label col-span-4 flex items-center gap-3 text-paper/70 md:col-span-3" suppressHydrationWarning data-reveal="fade">
-            <span className="t-index tracking-normal opacity-60">Nº 05</span>
+            <span className="t-index tracking-normal text-paper/65">Nº 05</span>
             <span aria-hidden className="h-px w-8 bg-current opacity-40" />
             Materijal
           </p>
@@ -127,12 +127,12 @@ export function MaterialStory() {
                     <ul className="grid grid-cols-3 gap-px bg-paper/15 sm:grid-cols-4" aria-label="Vrste drveta u ponudi">
                       {species.map((s) => (
                         <li key={s.slug} className="bg-charcoal p-2">
-                          <span aria-hidden className="block aspect-[5/3] w-full" style={{ background: s.tone }} />
+                          <span aria-hidden className="block aspect-[5/3] w-full" style={{ backgroundColor: s.tone }} />
                           <span className="t-small mt-2 block text-[0.78rem] leading-tight text-paper/85">{s.name}</span>
                         </li>
                       ))}
                     </ul>
-                    <p className="t-small mt-4 text-paper/50">Orijentacijski tonovi. Stvarnu boju provjerite na uzorku u salonu.</p>
+                    <p className="t-small mt-4 text-paper/65">Orijentacijski tonovi. Stvarnu boju provjerite na uzorku u salonu.</p>
                   </div>
                 ) : null}
                 {c.aside === "link" ? (

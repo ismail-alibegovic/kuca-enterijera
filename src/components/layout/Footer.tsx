@@ -15,7 +15,7 @@ export function Footer() {
         </div>
 
         <div className="col-span-2 md:col-span-2 md:col-start-6">
-          <h2 className="t-label mb-5 text-paper/50">Salon</h2>
+          <h2 className="t-label mb-5 text-paper/65">Salon</h2>
           <address className="t-small not-italic text-paper/85">
             {site.showroom.street}
             <br />
@@ -29,7 +29,7 @@ export function Footer() {
         </div>
 
         <div className="col-span-2 md:col-span-2">
-          <h2 className="t-label mb-5 text-paper/50">Kontakt</h2>
+          <h2 className="t-label mb-5 text-paper/65">Kontakt</h2>
           <ul className="t-small space-y-1.5 text-paper/85">
             {site.contact.phones.map((p) => (
               <li key={p.href}>
@@ -49,7 +49,7 @@ export function Footer() {
         </div>
 
         <div className="col-span-2 md:col-span-2">
-          <h2 className="t-label mb-5 text-paper/50">Kolekcije</h2>
+          <h2 className="t-label mb-5 text-paper/65">Kolekcije</h2>
           <ul className="t-small space-y-1.5 text-paper/85">
             {categories.map((c) => (
               <li key={c.slug}>
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
 
         <div className="col-span-2 md:col-span-1">
-          <h2 className="t-label mb-5 text-paper/50">Stranice</h2>
+          <h2 className="t-label mb-5 text-paper/65">Stranice</h2>
           <ul className="t-small space-y-1.5 text-paper/85">
             {nav.slice(1).map((n) => (
               <li key={n.href}>
@@ -89,7 +89,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="shell flex flex-col gap-3 py-6 text-paper/55 md:flex-row md:items-center md:justify-between">
+      <div className="shell flex flex-col gap-3 py-6 text-paper/55 max-md:pb-24 md:flex-row md:items-center md:justify-between">
         <p className="t-small">© {site.copyrightYear} Kuća Enterijera · Parketni centar Sarajevo · {fullAddress}</p>
         <p className="t-small flex gap-5">
           <Link href="/napomene" className="hover:text-paper">

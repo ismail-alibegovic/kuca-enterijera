@@ -9,7 +9,7 @@ export function ShowroomCta({ index }: { index?: string }) {
       <div className="shell grid-12 gap-y-12 py-24 md:py-32">
         <div className="col-span-4 md:col-span-6">
           <p className="t-label flex items-center gap-3" suppressHydrationWarning data-reveal="fade">
-            {index ? <span className="t-index tracking-normal opacity-60">Nº {index}</span> : null}
+            {index ? <span className="t-index tracking-normal text-mute">Nº {index}</span> : null}
             {index ? <span aria-hidden className="h-px w-8 bg-current opacity-40" /> : null}
             Salon
           </p>

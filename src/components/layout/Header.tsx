@@ -113,7 +113,11 @@ export function Header() {
                     type="button"
                     aria-expanded={panelOpen}
                     aria-controls={panelId}
-                    onClick={() => setPanelOpen((o) => !o)}
+                    onClick={(e) => {
+                      // With a mouse, hover already opened the panel; a click should not close it again.
+                      const pointer = (e.nativeEvent as PointerEvent).pointerType;
+                      setPanelOpen((o) => (pointer === "mouse" ? true : !o));
+                    }}
                     className={`t-label flex items-center gap-2 py-3 text-[0.7rem] ${isActive("/kolekcije") ? "" : "text-ink/80 hover:text-ink"}`}
                   >
                     Kolekcije

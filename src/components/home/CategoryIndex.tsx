@@ -17,7 +17,7 @@ export function CategoryIndex() {
       <div className="shell">
         <div className="grid-12 items-end border-b border-ink pb-6">
           <p className="t-label col-span-4 mb-6 flex items-center gap-3 md:col-span-3 md:mb-0" suppressHydrationWarning data-reveal="fade">
-            <span className="t-index tracking-normal opacity-60">Nº 03</span>
+            <span className="t-index tracking-normal text-mute">Nº 03</span>
             <span aria-hidden className="h-px w-8 bg-current opacity-40" />
             Kolekcije
           </p>
@@ -76,7 +76,6 @@ export function CategoryIndex() {
                     fill
                     sizes="30vw"
                     quality={70}
-                    placeholder="blur"
                     className={`object-cover transition-[opacity,scale,clip-path] duration-[1100ms] ease-[var(--ease-architect)] ${
                       i === active ? "scale-100 opacity-100 [clip-path:inset(0_0_0_0)]" : "scale-[1.06] opacity-0 [clip-path:inset(0_0_0_18%)]"
                     }`}

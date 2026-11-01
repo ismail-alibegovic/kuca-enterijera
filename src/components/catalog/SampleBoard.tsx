@@ -57,7 +57,7 @@ export function SampleBoard({
                   key={s}
                   title={speciesBySlug[s].name}
                   className="h-3 w-3 border border-ink/10"
-                  style={{ background: speciesBySlug[s].tone }}
+                  style={{ backgroundColor: speciesBySlug[s].tone }}
                 />
               ))}
               <span className="t-index ml-2 text-mute">{product.species.length} vrsta</span>

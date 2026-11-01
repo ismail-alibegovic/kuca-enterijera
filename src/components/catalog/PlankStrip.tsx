@@ -25,7 +25,6 @@ export function PlankStrip() {
               fill
               sizes="(min-width: 768px) 30vw, 50vw"
               quality={70}
-              placeholder="blur"
               preload={i < 3}
               className="object-cover transition-transform duration-[1600ms] ease-[var(--ease-architect)] group-hover:scale-[1.04]"
               style={{ objectPosition: media[c.hero].focus }}
@@ -33,7 +32,7 @@ export function PlankStrip() {
             <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/0 to-ink/0" />
             <span className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-3 text-paper md:p-5">
               <span className="t-index text-paper/75">{c.index}</span>
-              <span className="text-[1.15rem] leading-tight tracking-[-0.02em] md:whitespace-nowrap md:text-[1.45rem]">{c.name}</span>
+              <span className="text-[1.1rem] leading-[1.1] tracking-[-0.02em] [hyphens:auto] md:text-[clamp(1.1rem,1.5vw,1.45rem)]">{c.name}</span>
               <span className="t-small hidden max-w-[28ch] text-paper/80 opacity-0 transition-opacity duration-700 md:block md:group-hover:opacity-100 md:group-focus-within:opacity-100">
                 {c.kicker}
               </span>

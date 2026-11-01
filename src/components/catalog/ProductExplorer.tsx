@@ -131,7 +131,7 @@ export function ProductExplorer({
     <div>
       <div className="border-y border-line" role="group" aria-label="Filteri proizvoda">
         {facets.map((f) => (
-          <fieldset key={f} className="flex items-center gap-x-6 border-b border-line py-3 last:border-b-0 max-md:flex-col max-md:items-start max-md:gap-y-2">
+          <fieldset key={f} className="flex min-w-0 items-center gap-x-6 border-b border-line py-3 last:border-b-0 max-md:flex-col max-md:items-start max-md:gap-y-2">
             <legend className="sr-only">{facetTitles[f]}</legend>
             <span aria-hidden className="t-label w-40 shrink-0 text-mute">
               {facetTitles[f]}
@@ -162,7 +162,7 @@ export function ProductExplorer({
                     }`}
                   >
                     {f === "species" ? (
-                      <span aria-hidden className="h-3 w-3 border border-ink/10" style={{ background: speciesBySlug[o.value]?.tone }} />
+                      <span aria-hidden className="h-3 w-3 border border-ink/10" style={{ backgroundColor: speciesBySlug[o.value]?.tone }} />
                     ) : null}
                     {o.label}
                     <span className={`t-index ${on ? "text-paper/60" : "text-mute"}`}>{o.count}</span>
@@ -186,7 +186,7 @@ export function ProductExplorer({
       </div>
 
       {results.length ? (
-        <div className={`grid grid-cols-1 gap-x-[var(--col-gap)] gap-y-12 ${columns}`}>
+        <div className={`grid grid-cols-1 gap-x-[var(--col-gap)] gap-y-12 ${columns} xl:[&>*:nth-child(3n+2)]:mt-16`}>
           {results.map((p, i) => (
             <SampleBoard key={p.slug} product={p} number={String(i + 1).padStart(2, "0")} delay={(i % 3) * 90} headingLevel={headingLevel} />
           ))}

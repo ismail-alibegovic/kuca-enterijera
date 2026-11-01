@@ -63,7 +63,6 @@ export function InspirationGallery() {
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
                   quality={70}
-                  placeholder="blur"
                   className="object-cover"
                   style={{ objectPosition: media[e.image].focus }}
                 />

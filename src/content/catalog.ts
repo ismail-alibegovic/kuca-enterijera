@@ -200,7 +200,7 @@ export const categories: Category[] = [
       "U salonu vam pomažemo odabrati model iz ponude kompanije Dierre i pripremiti ponudu prema vašem prostoru.",
     ],
     hero: "frontDoorFacade",
-    heroAlt: "darkDoorArmchair",
+    heroAlt: "hallDoor",
     materials: "Blindirana vrata",
     seoTitle: "Sigurnosna vrata Sarajevo: Dierre blindirana ulazna vrata",
     seoDescription:
@@ -235,8 +235,8 @@ export const categories: Category[] = [
     body: [
       "Asortiman obuhvata ljepila za drvene podove, temeljne i završne lakove, ulja za unutarnje i vanjske drvene podove, tekućine za kitanje te sredstva za čišćenje i održavanje.",
     ],
-    hero: "darkPlanks",
-    heroAlt: "oakSideboard",
+    hero: "oakSideboard",
+    heroAlt: "darkPlanks",
     materials: "Ljepila · Lakovi · Ulja",
     seoTitle: "Ljepila, lakovi i ulja za parket: Chimiver, Sarajevo",
     seoDescription:
@@ -440,7 +440,7 @@ export const products: Product[] = [
     description: [
       "Chimiver stalno proširuje asortiman, a danas obuhvata sve što je potrebno za postavljanje, završnu obradu i njegu drvenih podova.",
     ],
-    images: ["darkPlanks", "oakSideboard"],
+    images: ["oakSideboard", "darkPlanks"],
     material: "zavrsna-obrada",
     applications: ["dom", "poslovni", "vanjski"],
     manufacturers: ["chimiver"],

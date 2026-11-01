@@ -24,7 +24,7 @@ export function ComparisonTable({ items }: { items: Product[] }) {
 
   return (
     <div className="-mx-[var(--gutter)] overflow-x-auto px-[var(--gutter)]">
-      <table className="w-full min-w-[40rem] border-collapse text-left">
+      <table className="w-full min-w-[40rem] table-fixed border-collapse text-left">
         <caption className="sr-only">Usporedba linija proizvoda</caption>
         <thead>
           <tr className="border-b border-ink">

@@ -89,16 +89,16 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         </ul>
       </nav>
 
-      <div className="shell grid shrink-0 grid-cols-2 gap-px border-t border-line bg-line pb-[env(safe-area-inset-bottom)]">
-        <a href={primaryPhone.href} className="flex flex-col gap-1 bg-paper py-5 pr-4">
+      <div className="shell grid shrink-0 grid-cols-1 gap-px border-t border-line bg-line pb-[env(safe-area-inset-bottom)]">
+        <a href={primaryPhone.href} className="flex items-center justify-between gap-4 bg-paper py-4">
           <span className="t-label text-mute">Pozovite</span>
           <span className="t-small">{primaryPhone.display}</span>
         </a>
-        <a href={primaryEmail.href} className="flex flex-col gap-1 bg-paper py-5 pl-4">
+        <a href={primaryEmail.href} className="flex items-center justify-between gap-4 bg-paper py-4">
           <span className="t-label text-mute">Pišite</span>
-          <span className="t-small break-all">{primaryEmail.display}</span>
+          <span className="t-small">{primaryEmail.display}</span>
         </a>
-        <a href={mapsUrl} target="_blank" rel="noreferrer" className="col-span-2 flex items-center justify-between bg-paper py-5">
+        <a href={mapsUrl} target="_blank" rel="noreferrer" className="flex items-center justify-between bg-paper py-4">
           <span className="flex flex-col gap-1">
             <span className="t-label text-mute">Salon</span>
             <span className="t-small">{fullAddress}</span>

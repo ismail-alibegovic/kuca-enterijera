@@ -60,10 +60,10 @@ export function Hero() {
 
         {/* Beneath the floor line: what we sell, and the two actions */}
         <div className="grid-12 gap-y-10 pt-8 pb-20 md:pt-8 md:pb-28">
-          <p className="t-lead col-span-4 max-w-[38ch] text-ink/85 md:col-span-4" suppressHydrationWarning data-reveal="up" style={{ "--d": 250 } as CSSProperties}>
+          <p className="t-lead col-span-4 max-w-[38ch] text-ink/85 md:col-span-6 lg:col-span-4" suppressHydrationWarning data-reveal="up" style={{ "--d": 250 } as CSSProperties}>
             Parketi, podne obloge, sigurnosna vrata i sve za njihovu ugradnju i njegu. Pogledajte uzorke u našem salonu u Sarajevu.
           </p>
-          <div className="col-span-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6 md:col-span-4" suppressHydrationWarning data-reveal="up" style={{ "--d": 350 } as CSSProperties}>
+          <div className="col-span-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6 md:col-span-6 md:justify-end lg:col-span-4 lg:justify-start" suppressHydrationWarning data-reveal="up" style={{ "--d": 350 } as CSSProperties}>
             <Cta href="/kolekcije" className="w-full sm:w-auto">
               Istražite kolekcije
             </Cta>
@@ -71,8 +71,8 @@ export function Hero() {
               Zatražite ponudu
             </Cta>
           </div>
-          <nav aria-label="Kolekcije" className="col-span-4 md:col-span-4" suppressHydrationWarning data-reveal="up" style={{ "--d": 450 } as CSSProperties}>
-            <ul className="grid grid-cols-2 gap-x-6 border-t border-line">
+          <nav aria-label="Kolekcije" className="col-span-4 md:col-span-12 lg:col-span-4" suppressHydrationWarning data-reveal="up" style={{ "--d": 450 } as CSSProperties}>
+            <ul className="grid grid-cols-2 gap-x-6 border-t border-line md:grid-cols-3 lg:grid-cols-2">
               {categories.map((c) => (
                 <li key={c.slug} className="border-b border-line">
                   <Link href={categoryHref(c)} className="group flex items-baseline gap-2.5 py-2.5">

@@ -25,6 +25,12 @@ import { media } from "@/content/media";
 import { primaryPhone } from "@/content/site";
 import { absolute, pageMetadata } from "@/lib/seo";
 
+/**
+ * Every real slug is prerendered via generateStaticParams, so navigation to them is instant.
+ * Unknown slugs may block so that notFound() can return a real 404 status (no streamed 200 shell).
+ */
+export const instant = false;
+
 export function generateStaticParams() {
   return products.map((p) => ({ kategorija: p.category, proizvod: p.slug }));
 }
