@@ -8,9 +8,9 @@ import { mapsUrl, site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Salon i kontakt: Hiseta 19, Sarajevo",
+  title: "Salon i kontakt: Alipašina 55, Sarajevo",
   description:
-    "Posjetite salon Kuća Enterijera u ulici Hiseta 19 u Sarajevu ili pošaljite upit za ponudu parketa, podnih obloga i sigurnosnih vrata. Telefon +387 61 221 173.",
+    "Posjetite salon Kuća Enterijera u ulici Alipašina 55 u Sarajevu ili pošaljite upit za ponudu parketa, podnih obloga i sigurnosnih vrata. Telefon +387 61 221 173.",
   path: "/kontakt",
   image: "staircaseOak",
 });
@@ -23,7 +23,7 @@ export default function ContactPage() {
         <Breadcrumbs items={[{ name: "Početna", path: "/" }, { name: "Salon i kontakt", path: "/kontakt" }]} />
         <div className="grid-12 mt-10 gap-y-12 md:mt-14">
           <div className="col-span-4 md:col-span-7">
-            <Lines as="h1" id="kontakt-title" className="t-mega" lines={["Hiseta 19", <span key="2" className="t-serif-italic text-oak-deep">Sarajevo.</span>]} />
+            <Lines as="h1" id="kontakt-title" className="t-mega" lines={["Alipašina 55", <span key="2" className="t-serif-italic text-oak-deep">Sarajevo.</span>]} />
             <p className="t-lead mt-10 max-w-[46ch] text-ink/80">
               Recite nam šta vam treba i dozvolite našem stručnom i ljubaznom osoblju da vam predloži najbolje moguće rješenje. Pažljivo ćemo vas saslušati.
             </p>
@@ -107,7 +107,7 @@ export default function ContactPage() {
         <div className="col-span-4 md:col-span-4">
           <SectionLabel>Lokacija</SectionLabel>
           <h2 id="karta-title" className="t-h2 mt-6">
-            Salon <span className="t-serif-italic">u ulici Hiseta</span>
+            Salon <span className="t-serif-italic">u ulici Alipašina</span>
           </h2>
           <p className="t-body mt-6 max-w-[36ch] text-ink/75">
             U salonu na adresi {site.showroom.street} u Sarajevu možete pogledati dio našeg asortimana.

@@ -54,7 +54,7 @@ export function Hero() {
           {/* Small detail plate, offset like a sample pinned to the wall */}
           <div className="hidden md:col-span-1 md:col-start-8 md:row-start-1 md:block md:self-end" aria-hidden>
             <Photo id="herringbonePortrait" sizes="9vw" className="aspect-[3/4] w-full" delay={450} reveal="rise" />
-            <p className="t-index mt-2 mb-3 text-mute">Hrast · riblja kost</p>
+            <span className="mb-3 block" />
           </div>
         </div>
 

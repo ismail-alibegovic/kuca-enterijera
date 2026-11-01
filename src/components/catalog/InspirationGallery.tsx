@@ -102,7 +102,7 @@ export function InspirationGallery() {
           <div className="on-dark flex h-full flex-col">
             <div className="flex items-center justify-between px-[var(--gutter)] py-4">
               <p className="t-label text-paper/70">
-                {current.title} · Ilustracija
+                {current.title}
               </p>
               <button type="button" className="t-label p-2" onClick={() => setOpen(null)} autoFocus>
                 Zatvori ×

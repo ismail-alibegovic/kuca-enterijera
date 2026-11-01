@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Inspiracija: parket, podne obloge i materijali u prostoru",
   description:
-    "Galerija inspiracije za stambene, poslovne i komercijalne prostore: parket riblja kost, drvene terase, tekstilni podovi. Ilustrativne fotografije.",
+    "Galerija inspiracije za stambene, poslovne i komercijalne prostore: drveni podovi, sigurnosna vrata i poslovni prostori.",
   path: "/inspiracija",
   image: "herringboneTimberCeiling",
 });
@@ -31,7 +31,7 @@ export default function InspirationPage() {
           <div className="col-span-4 md:col-span-4 md:pb-3">
             <p className="t-lead text-ink/80">Kako materijali oblikuju dom, ured i javni prostor.</p>
             <p className="t-small mt-4 border-l-2 border-oak pl-4 text-ink/70">
-              Fotografije na ovoj stranici su <strong className="font-[560]">ilustrativne</strong> i ne prikazuju projekte Kuće Enterijera. Uz svaku sliku navodimo linije iz naše ponude koje se uklapaju u taj ugođaj.
+              Ideje za prostor. Uz svaku sliku navodimo linije iz naše ponude koje se uklapaju u taj ugođaj.
             </p>
           </div>
         </div>

@@ -91,7 +91,7 @@ export function MaterialStory() {
                   />
                 ))}
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4">
-                  <span className="t-label bg-ink/60 px-2 py-1 text-[0.58rem] text-paper/80">Ilustracija</span>
+                  <span />
                   <span className="t-index text-paper/90">
                     {String(active + 1).padStart(2, "0")} / {String(chapters.length).padStart(2, "0")}
                   </span>

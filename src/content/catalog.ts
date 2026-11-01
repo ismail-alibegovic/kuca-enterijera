@@ -148,7 +148,7 @@ export const categories: Category[] = [
     materials: "Hrast · Jasen · Orah · Jatoba · Wenge",
     seoTitle: "Parketi Sarajevo: troslojni, dvoslojni i masivni parket",
     seoDescription:
-      "Troslojni, dvoslojni i masivni parket od hrasta, jasena, oraha i egzotičnih vrsta. Pogledajte uzorke u salonu Kuća Enterijera, Hiseta 19, Sarajevo.",
+      "Troslojni, dvoslojni i masivni parket od hrasta, jasena, oraha i egzotičnih vrsta. Pogledajte uzorke u salonu Kuća Enterijera, Alipašina 55, Sarajevo.",
   },
   {
     slug: "pvc-i-tekstilni-podovi",

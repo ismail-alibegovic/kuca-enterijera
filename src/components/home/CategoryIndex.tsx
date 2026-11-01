@@ -85,7 +85,6 @@ export function CategoryIndex() {
               </div>
               <div className="mt-3 flex items-baseline justify-between">
                 <p className="t-label">{categories[active].materials}</p>
-                <p className="t-label text-mute">Ilustracija</p>
               </div>
             </div>
           </div>

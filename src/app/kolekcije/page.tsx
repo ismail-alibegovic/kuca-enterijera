@@ -30,7 +30,6 @@ export default function CollectionsPage() {
 
       <section className="shell" aria-label="Kolekcije">
         <PlankStrip />
-        <p className="t-label mt-3 text-right text-[0.58rem] text-mute">Ilustrativne fotografije</p>
       </section>
 
       <section className="shell py-20 md:py-28" aria-labelledby="sve-linije">

@@ -1,39 +1,26 @@
 import type { StaticImageData } from "next/image";
 
-import carpetBoardroom from "@/assets/photo/carpet-boardroom.jpg";
-import carpetLounge from "@/assets/photo/carpet-lounge.jpg";
-import chevronKitchen from "@/assets/photo/chevron-kitchen.jpg";
-import darkDoorArmchair from "@/assets/photo/dark-door-armchair.jpg";
-import darkPlanks from "@/assets/photo/dark-planks.jpg";
-import deckAerial from "@/assets/photo/deck-aerial.jpg";
-import frontDoorFacade from "@/assets/photo/front-door-facade.jpg";
-import glassPavilion from "@/assets/photo/glass-pavilion.jpg";
-import hallDoor from "@/assets/photo/hall-door.jpg";
-import herringboneLiving from "@/assets/photo/herringbone-living.jpg";
-import herringbonePortrait from "@/assets/photo/herringbone-portrait.jpg";
-import herringboneTimberCeiling from "@/assets/photo/herringbone-timber-ceiling.jpg";
-import houseDusk from "@/assets/photo/house-dusk.jpg";
-import houseTimberNight from "@/assets/photo/house-timber-night.jpg";
-import indoorOutdoorDeck from "@/assets/photo/indoor-outdoor-deck.jpg";
-import livingWoodWall from "@/assets/photo/living-wood-wall.jpg";
-import lobbySlats from "@/assets/photo/lobby-slats.jpg";
-import oakDeskPlaster from "@/assets/photo/oak-desk-plaster.jpg";
-import oakQuietRoom from "@/assets/photo/oak-quiet-room.jpg";
-import oakSideboard from "@/assets/photo/oak-sideboard.jpg";
-import officeLounge from "@/assets/photo/office-lounge.jpg";
-import officeWindow from "@/assets/photo/office-window.jpg";
-import resilientCorridor from "@/assets/photo/resilient-corridor.jpg";
-import staircaseOak from "@/assets/photo/staircase-oak.jpg";
-import vinylEmptyRoom from "@/assets/photo/vinyl-empty-room.jpg";
-import warmLiving from "@/assets/photo/warm-living.jpg";
+import living from "@/assets/site/living-oak-floor.jpg";
+import livingDark from "@/assets/site/living-dark-floor.jpg";
+import bedroom from "@/assets/site/bedroom-oak-floor.jpg";
+import corridor from "@/assets/site/corridor-black-doors.jpg";
+import dining from "@/assets/site/dining-light-floor.jpg";
+import lounge from "@/assets/site/lounge-wood-wall.jpg";
+import conference from "@/assets/site/conference-room.jpg";
+import officeChair from "@/assets/site/office-chair.jpg";
+import sideboard from "@/assets/site/sideboard.jpg";
+import sofa from "@/assets/site/sofa-white-floor.jpg";
+import bathroom from "@/assets/site/bathroom.jpg";
 
 /**
- * Provenance of an image. The site must never present illustrative imagery as company work.
- *  - "illustrative": licensed stock used temporarily (not Kuća Enterijera products/projects)
- *  - "company":      authentic photography supplied by Kuća Enterijera (none available yet)
- *  - "manufacturer": manufacturer-approved product imagery (none available yet)
+ * Provenance of an image.
+ *  - "legacy":       photography taken from the client's current website (kuca-enterijera.ba), used for this demo
+ *  - "illustrative": licensed stock used temporarily
+ *  - "company":      authentic photography supplied by Kuća Enterijera
+ *  - "manufacturer": manufacturer-approved product imagery
+ * The 2022 category sketches on the old site carry stock watermarks and are deliberately not used.
  */
-export type Provenance = "illustrative" | "company" | "manufacturer";
+export type Provenance = "legacy" | "illustrative" | "company" | "manufacturer";
 
 export type Media = {
   src: StaticImageData;
@@ -45,45 +32,57 @@ export type Media = {
   focus?: string;
 };
 
-const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}`;
-const UNSPLASH_LICENSE = "Unsplash License (besplatna komercijalna upotreba)";
+const SITE = "https://kuca-enterijera.ba";
+const fileUrl: Record<string, string> = {
+  living: `${SITE}/wp-content/uploads/2022/08/1d-1.jpg`,
+  livingDark: `${SITE}/wp-content/uploads/2022/08/2d.jpg`,
+  bedroom: `${SITE}/wp-content/uploads/2022/08/3d.jpg`,
+  corridor: `${SITE}/wp-content/uploads/2022/08/4d.jpg`,
+  dining: `${SITE}/wp-content/uploads/2017/05/image-interior-home.jpg`,
+  lounge: `${SITE}/wp-content/uploads/2017/05/motive-slider-01.jpg`,
+  conference: `${SITE}/wp-content/uploads/2017/05/image-office-chairs.jpg`,
+  officeChair: `${SITE}/wp-content/uploads/2017/05/image-chair-blue-wall.jpg`,
+  sideboard: `${SITE}/wp-content/uploads/2016/07/image-about-design-process.jpg`,
+  sofa: `${SITE}/wp-content/uploads/2016/07/bg-clients.jpg`,
+  bathroom: `${SITE}/wp-content/uploads/2016/07/bg-heading-01.jpg`,
+};
 
-const m = (src: StaticImageData, alt: string, id: string, focus?: string): Media => ({
+const m = (src: StaticImageData, key: string, alt: string, focus?: string): Media => ({
   src,
   alt,
-  provenance: "illustrative",
-  source: unsplash(id),
-  license: UNSPLASH_LICENSE,
+  provenance: "legacy",
+  source: fileUrl[key],
+  license: "S postojeće web stranice kuca-enterijera.ba (potrebna potvrda prava korištenja)",
   focus,
 });
 
 export const media = {
-  herringboneLiving: m(herringboneLiving, "Svijetli hrastov parket u uzorku riblje kosti ispod svijetle sofe", "1615800001964-5afd0ae8e49a", "50% 80%"),
-  herringbonePortrait: m(herringbonePortrait, "Hrastov parket riblja kost u dnevnom boravku s tepihom i foteljom", "1615800002234-05c4d488696c", "50% 85%"),
-  herringboneTimberCeiling: m(herringboneTimberCeiling, "Prostorija s drvenim stropom i podom u uzorku riblje kosti", "1618219908412-a29a1bb7b86e", "50% 85%"),
-  chevronKitchen: m(chevronKitchen, "Kuhinja s drvenim zidnim oblogama i svijetlim podom u uzorku riblje kosti", "1622372738946-62e02505feb3", "50% 70%"),
-  oakQuietRoom: m(oakQuietRoom, "Mirna, prazna prostorija s hrastovim podom od dugih dasaka", "1581858726788-75bc0f6a952d", "50% 80%"),
-  oakDeskPlaster: m(oakDeskPlaster, "Drvena polica i radni stol uz zid od žbuke, iznad toplog drvenog poda", "1597072689227-8882273e8f6a", "50% 60%"),
-  oakSideboard: m(oakSideboard, "Hrastova komoda uz toplo obojeni zid", "1616627781431-23b776aad6b2", "50% 60%"),
-  darkPlanks: m(darkPlanks, "Detalj tamnih drvenih dasaka s izraženim godovima", "1546484396-fb3fc6f95f98", "50% 50%"),
-  deckAerial: m(deckAerial, "Vanjska drvena terasa s vrtnim namještajem, pogled odozgo", "1617850687395-620757feb1f3", "50% 50%"),
-  indoorOutdoorDeck: m(indoorOutdoorDeck, "Dnevni boravak koji se kroz staklene stijene nastavlja na drvenu terasu", "1604014237800-1c9102c219da", "50% 70%"),
-  glassPavilion: m(glassPavilion, "Spavaća soba sa staklenim zidom i pogledom na terasu", "1600573472591-ee6b68d14c68", "60% 50%"),
-  carpetBoardroom: m(carpetBoardroom, "Sala za sastanke s tekstilnom podnom oblogom i velikim prozorima", "1462826303086-329426d1aef5", "40% 60%"),
-  carpetLounge: m(carpetLounge, "Siva sofa na tamnoj tekstilnoj podnoj oblozi", "1616627451515-cbc80e5ece35", "50% 75%"),
-  resilientCorridor: m(resilientCorridor, "Dugi uredski hodnik s jednobojnom elastičnom podnom oblogom", "1497366216548-37526070297c", "50% 60%"),
-  vinylEmptyRoom: m(vinylEmptyRoom, "Prazna svijetla prostorija s podnom oblogom u dekoru drveta", "1630699144867-37acec97df5a", "50% 70%"),
-  frontDoorFacade: m(frontDoorFacade, "Ulaz u modernu kuću s drvenom fasadom i ulaznim vratima", "1628744448840-55bdb2497bd4", "50% 55%"),
-  hallDoor: m(hallDoor, "Ulazni hodnik s okruglim ogledalom, klupom i vratima", "1618220252344-8ec99ec624b1", "50% 50%"),
-  darkDoorArmchair: m(darkDoorArmchair, "Tamna vrata uz žutu fotelju na hrastovom podu", "1586023492125-27b2c045efd7", "20% 50%"),
-  officeWindow: m(officeWindow, "Svijetli uredski prostor uz staklenu fasadu", "1497215728101-856f4ea42174", "50% 50%"),
-  officeLounge: m(officeLounge, "Poslovni prostor s foteljama i radnim zonama", "1524758631624-e2822e304c36", "50% 60%"),
-  lobbySlats: m(lobbySlats, "Predvorje s drvenim lamelama na zidu i toplim osvjetljenjem", "1621293954908-907159247fc8", "50% 50%"),
-  houseTimberNight: m(houseTimberNight, "Moderna kuća s drvenom oblogom u sumrak", "1600585154340-be6161a56a0c", "50% 50%"),
-  houseDusk: m(houseDusk, "Moderna kuća s tamnom fasadom i osvijetljenim prozorima", "1600585154363-67eb9e2e2099", "50% 50%"),
-  livingWoodWall: m(livingWoodWall, "Dnevni boravak sa zidom od drveta i velikim kliznim stijenama", "1600585154084-4e5fe7c39198", "50% 60%"),
-  staircaseOak: m(staircaseOak, "Drveno stubište i drveni pod u otvorenom dnevnom prostoru", "1600047508788-786f3865b4b9", "40% 60%"),
-  warmLiving: m(warmLiving, "Topli dnevni boravak s drvenim podom i niskim prozorima", "1618221195710-dd6b41faaea6", "50% 60%"),
+  herringboneLiving: m(living, "living", "Prostrani dnevni boravak s toplim drvenim podom", "45% 75%"),
+  herringbonePortrait: m(dining, "dining", "Dnevni prostor sa svijetlim drvenim podom i blagovaonicom", "65% 80%"),
+  herringboneTimberCeiling: m(livingDark, "livingDark", "Dnevni boravak s tamnim drvenim podom i pogledom na terasu", "40% 70%"),
+  chevronKitchen: m(dining, "dining", "Otvoreni dnevni prostor sa svijetlim drvenim podom", "60% 75%"),
+  oakQuietRoom: m(bedroom, "bedroom", "Spavaća soba s hrastovim podom od dugih dasaka", "25% 80%"),
+  oakDeskPlaster: m(bedroom, "bedroom", "Hrastov pod u spavaćoj sobi uz biljku i fotelju", "28% 75%"),
+  oakSideboard: m(sideboard, "sideboard", "Drvena komoda i fotelja na svijetlom drvenom podu", "25% 70%"),
+  darkPlanks: m(lounge, "lounge", "Prostor s tamnom drvenom zidnom oblogom i foteljama", "70% 50%"),
+  deckAerial: m(livingDark, "livingDark", "Dnevni boravak otvoren prema terasi", "15% 50%"),
+  indoorOutdoorDeck: m(livingDark, "livingDark", "Dnevni boravak s drvenim podom koji vodi prema terasi", "30% 70%"),
+  glassPavilion: m(bathroom, "bathroom", "Svijetla kupaonica uz velike prozore", "30% 50%"),
+  carpetBoardroom: m(conference, "conference", "Sala za sastanke s drvenim podom i pogledom na grad", "50% 70%"),
+  carpetLounge: m(lounge, "lounge", "Lounge prostor s foteljama i tamnim zidom", "55% 70%"),
+  resilientCorridor: m(corridor, "corridor", "Dugi hodnik sa sjajnim podom i tamnim vratima", "50% 60%"),
+  vinylEmptyRoom: m(living, "living", "Dnevni prostor s jednolično postavljenim podom", "30% 80%"),
+  frontDoorFacade: m(corridor, "corridor", "Hodnik s tamnim ulaznim vratima", "88% 55%"),
+  hallDoor: m(corridor, "corridor", "Tamna vrata u svijetlom hodniku", "45% 55%"),
+  darkDoorArmchair: m(corridor, "corridor", "Tamna vrata u modernom interijeru", "70% 55%"),
+  officeWindow: m(conference, "conference", "Sala za sastanke s velikim prozorima", "60% 50%"),
+  officeLounge: m(officeChair, "officeChair", "Uredska fotelja i komoda", "70% 60%"),
+  lobbySlats: m(lounge, "lounge", "Prostor s drvenom zidnom oblogom", "45% 50%"),
+  houseTimberNight: m(living, "living", "Dnevni boravak s drvenim podom", "50% 70%"),
+  houseDusk: m(livingDark, "livingDark", "Dnevni boravak s drvenim podom", "50% 70%"),
+  livingWoodWall: m(dining, "dining", "Dnevni prostor sa zidnom oblogom i drvenim podom", "30% 70%"),
+  staircaseOak: m(sofa, "sofa", "Sofa na svijetlom drvenom podu", "50% 80%"),
+  warmLiving: m(livingDark, "livingDark", "Topli dnevni boravak s tamnim drvenim podom", "45% 70%"),
 } satisfies Record<string, Media>;
 
 export type MediaKey = keyof typeof media;

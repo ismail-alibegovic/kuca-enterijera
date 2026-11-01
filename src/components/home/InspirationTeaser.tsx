@@ -24,7 +24,7 @@ export function InspirationTeaser() {
             Prostori koji počinju <span className="t-serif-italic">od materijala</span>
           </h2>
           <p className="t-small col-span-4 text-mute md:col-span-3" suppressHydrationWarning data-reveal="up">
-            Ilustrativne fotografije prostora za inspiraciju. Ne prikazuju projekte Kuće Enterijera.
+            Ideje za dom, ured i javne prostore, uz linije iz naše ponude koje se uklapaju.
           </p>
         </div>
 

@@ -20,23 +20,18 @@ export const site = {
     "Parketni centar u Sarajevu: dvoslojni, troslojni i masivni parketi, PVC i tekstilni podovi, WPC vanjske podne obloge, sigurnosna vrata Dierre, kancelarijski namještaj te ljepila i lakovi za drvene podove.",
 
   showroom: {
-    /** Contact page + global footer on the current site. */
-    street: "Hiseta 19",
+    /** Confirmed by the client (31 Oct 2026). */
+    street: "Alipašina 55",
     postalCode: "71000",
     city: "Sarajevo",
     country: "Bosna i Hercegovina",
     countryCode: "BA",
-    /**
-     * DISCREPANCY: the current "O nama" page mentions a salon in "Alipašina 55".
-     * The contact page and the footer use "Hiseta 19". Hiseta 19 is used as the
-     * current address until the client confirms.
-     */
-    addressDiscrepancyNote:
-      "Stranica „O nama” na postojećoj web stranici navodi salon u ulici Alipašina 55, dok kontakt stranica i podnožje navode Hiseta 19. Potrebna potvrda klijenta.",
+    /** Previously listed on the contact page/footer of the old site; superseded by Alipašina 55. */
+    previousAddress: "Hiseta 19",
     /** Opening hours are not published on the existing website, so leave this null until confirmed. */
     openingHours: null as null | { days: string; hours: string }[],
     /** Map links use an address search (no exact coordinates were verified). */
-    mapsQuery: "Hiseta 19, 71000 Sarajevo",
+    mapsQuery: "Alipašina 55, 71000 Sarajevo",
   },
 
   contact: {
@@ -71,7 +66,6 @@ export const site = {
   brandLogo: "proposal" as "proposal" | "original",
 
   pendingVerification: [
-    "Adresa salona (Hiseta 19 vs. Alipašina 55)",
     "Radno vrijeme salona",
     "Važeći certifikati (ISO / FSC)",
     "Profili na društvenim mrežama",
