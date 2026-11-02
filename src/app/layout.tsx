@@ -1,27 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Newsreader } from "next/font/google";
-import { RevealRoot } from "@/components/ui/RevealRoot";
+import localFont from "next/font/local";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { MobileActionBar } from "@/components/layout/MobileActionBar";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { RevealRoot } from "@/components/ui/RevealRoot";
 import { site } from "@/content/site";
 import { localBusinessJsonLd } from "@/lib/seo";
 import "./globals.css";
 
-const instrument = Instrument_Sans({
-  subsets: ["latin", "latin-ext"],
-  axes: ["wdth"],
-  variable: "--font-instrument",
+/**
+ * TeX Gyre Heros (GUST Font License): a free Helvetica-style grotesk with full Latin Extended
+ * (č ć đ š ž). Self-hosted and subset. See src/fonts/README.md.
+ */
+const grotesk = localFont({
+  src: [
+    { path: "../fonts/texgyreheros-regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/texgyreheros-italic.woff2", weight: "400", style: "italic" },
+  ],
+  variable: "--font-grotesk",
   display: "swap",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin", "latin-ext"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-  variable: "--font-newsreader",
-  display: "swap",
+  fallback: ["Helvetica Neue", "Helvetica", "Arial"],
 });
 
 export const metadata: Metadata = {
@@ -36,14 +34,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f0e8",
+  themeColor: "#fef8ed",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="bs" className={`${instrument.variable} ${newsreader.variable}`} suppressHydrationWarning>
+    <html lang="bs" className={grotesk.variable} suppressHydrationWarning>
       <head>
         {/* Enables reveal animations only when JS runs; content stays visible otherwise. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
@@ -53,11 +51,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Preskoči na sadržaj
         </a>
         <Header />
-        <main id="sadrzaj" className="pt-[var(--header-h)]">
-          {children}
-        </main>
+        <main id="sadrzaj">{children}</main>
         <Footer />
-        <MobileActionBar />
         <RevealRoot />
         <JsonLd data={localBusinessJsonLd()} />
       </body>

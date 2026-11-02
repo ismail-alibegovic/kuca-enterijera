@@ -94,16 +94,16 @@ export function InquiryForm() {
       <div ref={statusRef} tabIndex={-1} role="status" className="border-t border-ink py-12 outline-none">
         <p className="t-label text-mute">Upit je poslan</p>
         <p className="t-statement mt-4">
-          Hvala, {data.name.split(" ")[0]}. <span className="t-serif-italic">Javit ćemo vam se uskoro.</span>
+          Hvala, {data.name.split(" ")[0]}. <span className="italic">Javit ćemo vam se uskoro.</span>
         </p>
         <p className="t-body mt-6 max-w-[52ch] text-mute">
           Odgovor stiže na {data.email}. Za hitna pitanja pozovite salon na{" "}
-          <a className="link-line text-ink" href={primaryPhone.href}>
+          <a className="link text-ink" href={primaryPhone.href}>
             {primaryPhone.display}
           </a>
           .
         </p>
-        <button type="button" className="t-label link-line mt-8" onClick={() => { setData(empty); setStatus({ kind: "idle" }); }}>
+        <button type="button" className="t-label link mt-8" onClick={() => { setData(empty); setStatus({ kind: "idle" }); }}>
           Pošaljite novi upit
         </button>
       </div>
@@ -127,11 +127,11 @@ export function InquiryForm() {
     <form ref={formRef} onSubmit={onSubmit} noValidate className="relative" aria-describedby={`${uid}-req`}>
       <fieldset className="mb-10">
         <legend className="t-label mb-4 text-mute">Vrsta upita</legend>
-        <div className="grid grid-cols-2 border border-ink">
+        <div className="grid grid-cols-2 border border-line-strong">
           {(["ponuda", "upit"] as const).map((t) => (
             <label
               key={t}
-              className={`t-label flex min-h-12 cursor-pointer items-center justify-center px-3 text-center text-[0.68rem] transition-colors duration-300 has-[:focus-visible]:outline has-[:focus-visible]:outline-offset-2 ${
+              className={`t-label flex min-h-12 cursor-pointer items-center justify-center px-3 text-center transition-colors duration-300 has-[:focus-visible]:outline has-[:focus-visible]:outline-offset-2 ${
                 data.type === t ? "bg-ink text-paper" : "hover:bg-paper-2"
               }`}
             >
@@ -246,7 +246,7 @@ export function InquiryForm() {
         <button
           type="submit"
           disabled={status.kind === "sending"}
-          className="t-label inline-flex min-h-14 items-center justify-between gap-10 bg-ink px-7 text-[0.72rem] text-paper transition-colors duration-500 hover:bg-charcoal disabled:opacity-60"
+          className="t-label inline-flex min-h-12 items-center justify-between gap-10 bg-ink px-6 text-paper transition-colors duration-500 hover:bg-brown disabled:opacity-60"
         >
           {status.kind === "sending" ? "Šaljem…" : data.type === "ponuda" ? "Pošaljite zahtjev" : "Pošaljite upit"}
           <span aria-hidden className="arrow">→</span>
@@ -262,15 +262,15 @@ export function InquiryForm() {
               : "Došlo je do greške i upit nije poslan. Pošaljite ga emailom (tekst je već pripremljen) ili nas nazovite."}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href={mailto()} className="t-label inline-flex min-h-12 items-center gap-3 bg-ink px-5 text-[0.7rem] text-paper">
+            <a href={mailto()} className="t-label inline-flex min-h-12 items-center gap-3 bg-ink px-5 text-paper">
               Otvori email s upitom →
             </a>
-            <a href={primaryPhone.href} className="t-label inline-flex min-h-12 items-center border border-ink px-5 text-[0.7rem]">
+            <a href={primaryPhone.href} className="t-label inline-flex min-h-12 items-center border border-ink px-5">
               Pozovi {primaryPhone.display}
             </a>
             <button
               type="button"
-              className="t-label inline-flex min-h-12 items-center px-2 text-[0.7rem] link-line"
+              className="t-label inline-flex min-h-12 items-center px-2 link"
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(inquiryToText(data, product?.name));

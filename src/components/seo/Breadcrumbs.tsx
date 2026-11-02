@@ -6,16 +6,16 @@ export function Breadcrumbs({ items, className = "" }: { items: { name: string; 
   return (
     <>
       <nav aria-label="Putanja" className={className}>
-        <ol className="t-label flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[0.62rem] text-mute">
+        <ol className="t-caption flex flex-wrap items-center gap-x-2 gap-y-1 text-mute">
           {items.map((it, i) => (
-            <li key={it.path} className="flex items-center gap-2.5">
+            <li key={it.path} className="flex items-center gap-2">
               {i > 0 ? <span aria-hidden>/</span> : null}
               {i === items.length - 1 ? (
                 <span aria-current="page" className="text-ink">
                   {it.name}
                 </span>
               ) : (
-                <Link href={it.path} className="hover:text-ink">
+                <Link href={it.path} className="link-hover hover:text-ink">
                   {it.name}
                 </Link>
               )}

@@ -22,18 +22,18 @@ export function MapEmbed() {
               <path d="M250 -10 L290 270" />
               <path d="M-10 250 L410 210" strokeWidth="6" className="text-ink/10" />
             </g>
-            <circle cx="210" cy="152" r="6" fill="var(--color-oak)" />
-            <circle cx="210" cy="152" r="16" fill="none" stroke="var(--color-oak)" strokeWidth="1" />
+            <circle cx="210" cy="152" r="6" fill="var(--color-brown)" />
+            <circle cx="210" cy="152" r="16" fill="none" stroke="var(--color-brown)" strokeWidth="1" />
           </svg>
-          <p className="t-label relative text-mute">Salon · {fullAddress}</p>
+          <p className="t-small relative text-mute">Salon · {fullAddress}</p>
           <div className="relative flex flex-wrap gap-3">
-            <button type="button" onClick={() => setLoad(true)} className="t-label min-h-11 bg-ink px-4 text-[0.68rem] text-paper">
+            <button type="button" onClick={() => setLoad(true)} className="t-label min-h-11 bg-ink px-4 text-paper">
               Prikaži kartu
             </button>
-            <a href={mapsUrl} target="_blank" rel="noreferrer" className="t-label inline-flex min-h-11 items-center border border-ink bg-paper px-4 text-[0.68rem]">
+            <a href={mapsUrl} target="_blank" rel="noreferrer" className="t-label inline-flex min-h-11 items-center border border-ink bg-paper px-4">
               Google Maps ↗
             </a>
-            <a href={osmUrl} target="_blank" rel="noreferrer" className="t-label inline-flex min-h-11 items-center border border-ink bg-paper px-4 text-[0.68rem]">
+            <a href={osmUrl} target="_blank" rel="noreferrer" className="t-label inline-flex min-h-11 items-center border border-ink bg-paper px-4">
               OpenStreetMap ↗
             </a>
           </div>

@@ -14,28 +14,32 @@ npm run typecheck && npm run lint
 ## Structure
 
 - `src/content/`: typed content layer (single source of truth)
-  - `site.ts`: contact, showroom, discrepancies, logo switch (`brandLogo`)
+  - `site.ts`: contact, showroom address (see discrepancy note), navigation
   - `catalog.ts`: categories, product lines, wood species, manufacturers (verified facts only)
-  - `media.ts`: image registry with provenance (`illustrative` | `company` | `manufacturer`)
-  - `inspiration.ts`: inspiration and project entries (`kind: "project"` for real projects)
-- `src/app/`: routes: `/`, `/kolekcije`, `/kolekcije/[kategorija]`, `/kolekcije/[kategorija]/[proizvod]`,
-  `/inspiracija`, `/o-nama`, `/kontakt`, `/brand` (logo proposal), `/napomene` (content/photo notes), `/api/upit`
-- `src/proxy.ts`: real 404 status for unknown catalogue slugs
-- `docs/research.md`: site audit and design-reference analysis
+  - `media.ts`: image registry with provenance (`company` | `manufacturer`) and source URLs
+- `src/app/`: routes `/`, `/ponuda`, `/ponuda/[kategorija]`, `/ponuda/[kategorija]/[proizvod]`, `/o-nama`,
+  `/kontakt`, `/api/upit`. Old demo URLs (`/kolekcije/*`, `/inspiracija`, `/brand`, `/napomene`) redirect.
+- `src/components/home/`: homepage sections, one per section of the design reference
+- `src/fonts/`: TeX Gyre Heros (GUST Font License), see `src/fonts/README.md`
+- `docs/design-reference.md`: reference analysis and comparison passes
+- `docs/image-inventory.md`: every image, its source, rejected images and gaps
+- `docs/research.md`: content audit and open discrepancies
+
+## Brand
+
+The original logo (`public/brand/original/ke-logo.png`, identical to the live asset) is used unchanged
+in the header, mobile menu and footer. No alternative logo exists in this project.
 
 ## Inquiry form
 
 `POST /api/upit` delivers via **Resend** (`RESEND_API_KEY`, `INQUIRY_TO_EMAIL`, optional `INQUIRY_FROM_EMAIL`)
 or a generic **webhook** (`FORM_WEBHOOK_URL`). Without either it returns `503 not_configured`, and the form shows
-an honest fallback: a pre-filled email and the phone number. It never shows a fake success message.
-
-Set `NEXT_PUBLIC_SITE_URL` for canonical/OG URLs (default `https://kuca-enterijera.ba`).
+an honest fallback: a pre-filled email and the phone number.
 
 ## Before production
 
-- Replace illustrative photos (Unsplash) with authentic product, showroom and project photography.
-- Confirm the showroom address (Hiseta 19 vs Alipašina 55), opening hours, certificates and social profiles.
-- Approve or reject the logo proposal (`site.brandLogo`); the original logo is preserved in `public/brand/original`.
+- Confirm the showroom address (Hiseta 19 vs Alipašina 55), opening hours and certificates.
+- Confirm dealer usage rights for manufacturer photography, or replace it with the company's own.
+- Request a vector or high-resolution version of the logo (only 233 × 60 px is published).
+- Commission photography of the showroom and completed work (none exists publicly).
 - Configure inquiry delivery (see above).
-- CMS: the content layer maps directly onto a headless CMS (e.g. Sanity or Payload) with collections for
-  categories, products, manufacturers, media and inspiration. It is a typed file layer, not an admin CMS.

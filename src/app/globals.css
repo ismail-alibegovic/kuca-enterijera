@@ -2,36 +2,31 @@
 
 /* ==================================================================================================
    KUĆA ENTERIJERA: design tokens
-   "Arhitektura materijala": warm paper, mineral inks, wood is the only colour.
+   Visual direction: the "DI / Ditre Italia" Dribbble reference. Warm off-white paper, near-black ink,
+   one Swiss grotesk at regular weight, hairline rules, photographs doing the work.
+   Measurements are taken from the reference at a 1440px canvas (see docs/design-reference.md).
    ================================================================================================ */
 
 @theme {
-  --color-paper: #f4f0e8;
-  --color-paper-2: #ebe4d8;
-  --color-sand: #d8c7ad;
-  --color-oak: #a0754b;
-  --color-oak-deep: #7a5536;
-  --color-charcoal: #2f312b;
-  --color-ink: #171916;
-  --color-mute: #605e56;
-  --color-line: rgb(23 25 22 / 0.14);
-  --color-line-strong: rgb(23 25 22 / 0.28);
-  --color-line-inverse: rgb(244 240 232 / 0.16);
+  --color-paper: #fef8ed;
+  --color-paper-2: #f6eedf;
+  --color-ink: #130e0a;
+  --color-brown: #4e301f;
+  --color-taupe: #665240;
+  --color-beige: #c4af97;
+  --color-mute: #6b5b4c;
+  --color-line: rgb(19 14 10 / 0.16);
+  --color-line-strong: rgb(19 14 10 / 0.32);
 
-  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-sans: var(--font-grotesk), "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  --ease-architect: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
-
-  --breakpoint-3xl: 1800px;
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root {
-  --gutter: clamp(1.25rem, 3.6vw, 3.5rem);
-  --col-gap: clamp(0.75rem, 1.6vw, 1.5rem);
-  --header-h: 4.5rem;
-  --dur-reveal: 1100ms;
+  /* 40px side margin at 1440 (reference), 16px on phones. */
+  --gutter: clamp(1rem, 2.8vw, 2.5rem);
+  --col-gap: clamp(0.75rem, 1.4vw, 1.25rem);
   color-scheme: light;
 }
 
@@ -42,18 +37,21 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  scroll-padding-top: calc(var(--header-h) + 1rem);
+  scroll-padding-top: 1.5rem;
+  overflow-x: clip;
 }
 
 body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01", "kern";
+  font-kerning: normal;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -62,12 +60,8 @@ body {
 }
 
 :focus-visible {
-  outline: 1.5px solid var(--color-ink);
+  outline: 1px solid currentColor;
   outline-offset: 4px;
-}
-.on-dark :focus-visible,
-.on-dark:focus-visible {
-  outline-color: var(--color-paper);
 }
 
 /* -------------------------------------------------------------------------------------------------
@@ -78,7 +72,7 @@ body {
   width: 100%;
   padding-inline: var(--gutter);
   margin-inline: auto;
-  max-width: 120rem;
+  max-width: 100rem;
 }
 
 @utility grid-12 {
@@ -91,344 +85,190 @@ body {
 }
 
 /* -------------------------------------------------------------------------------------------------
-   Typography scale
-   Instrument Sans: architecture, structure, information.
-   Newsreader: material, warmth, voice (mostly italic, used sparingly).
+   Typography: one family (TeX Gyre Heros, a Helvetica-style grotesk), regular weight throughout.
+   Hierarchy comes from size, spacing and the occasional italic, never from bold.
    ---------------------------------------------------------------------------------------------- */
 
-@utility t-mega {
-  font-family: var(--font-sans);
-  font-weight: 420;
-  font-size: clamp(3.4rem, 10.2vw, 11.75rem);
-  line-height: 0.86;
-  letter-spacing: -0.045em;
-  font-stretch: 92%;
-}
+/* Hero headline: "Quiet Forms — Loud in Meaning" ≈ 78px / 86px at 1440. */
 @utility t-display {
-  font-family: var(--font-sans);
-  font-weight: 420;
-  font-size: clamp(2.75rem, 7vw, 7.5rem);
+  font-size: clamp(2.5rem, 5.4vw, 5rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+}
+
+/* Oversized uppercase line: the marquee and "GET IN TOUCH". */
+@utility t-mega {
+  font-size: clamp(3.25rem, 8.6vw, 8.5rem);
   line-height: 0.92;
-  letter-spacing: -0.04em;
-  font-stretch: 94%;
-}
-@utility t-h1 {
-  font-family: var(--font-sans);
-  font-weight: 440;
-  font-size: clamp(2.35rem, 5vw, 5rem);
-  line-height: 0.98;
   letter-spacing: -0.035em;
-}
-@utility t-h2 {
-  font-family: var(--font-sans);
-  font-weight: 450;
-  font-size: clamp(1.85rem, 3.4vw, 3.4rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-}
-@utility t-h3 {
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-}
-@utility t-statement {
-  font-family: var(--font-serif);
-  font-weight: 350;
-  font-size: clamp(1.6rem, 3.1vw, 3.1rem);
-  line-height: 1.12;
-  letter-spacing: -0.012em;
-  font-variation-settings: "opsz" 60;
-}
-@utility t-serif-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 330;
-  letter-spacing: -0.02em;
-  font-variation-settings: "opsz" 72;
-}
-@utility t-lead {
-  font-size: clamp(1.075rem, 1.25vw, 1.25rem);
-  line-height: 1.55;
-  letter-spacing: -0.005em;
-}
-@utility t-body {
-  font-size: 1rem;
-  line-height: 1.65;
-}
-@utility t-small {
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-@utility t-label {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  line-height: 1.3;
-  font-weight: 550;
-  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-@utility t-index {
-  font-family: var(--font-sans);
+
+/* Page titles on internal pages. */
+@utility t-title {
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  line-height: 1.06;
+  letter-spacing: -0.026em;
+}
+
+/* Editorial statement paragraphs ≈ 34px / 44px at 1440. */
+@utility t-statement {
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  line-height: 1.24;
+  letter-spacing: -0.018em;
+}
+
+/* Indented first line, as in the reference statements. */
+@utility indent {
+  text-indent: 18%;
+}
+
+@utility t-h3 {
+  font-size: clamp(1.125rem, 1.35vw, 1.3rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+@utility t-body {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* Small editorial text blocks next to images. */
+@utility t-small {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+/* Navigation, captions and labels: small, sentence case, no tracking games. */
+@utility t-label {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+@utility t-caption {
   font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-/* -------------------------------------------------------------------------------------------------
-   Signature elements
-   ---------------------------------------------------------------------------------------------- */
-
-/* "Linija poda": the floor line elements stand on. */
-@utility floor-line {
-  border-bottom: 1px solid currentColor;
-}
-
-/* Plank-joint grid: hairline verticals at column boundaries (rendered by <PlankGrid/>). */
-.plank-grid > span {
-  border-color: var(--color-line);
-}
-.on-dark .plank-grid > span {
-  border-color: var(--color-line-inverse);
+  line-height: 1.4;
 }
 
 @layer components {
-/* Text link with an architectural underline that draws in from the left. */
-.link-line {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 100% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  padding-bottom: 0.15em;
-  transition: background-size 600ms var(--ease-architect);
-}
-@media (hover: hover) {
-  .link-line:hover {
-    background-size: 0% 1px;
-    background-position: 100% 100%;
+  /* Underlined text link (reference "CONTACT/" style). */
+  .link {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 0.1em;
+    transition: background-size 500ms var(--ease-calm);
   }
-  .link-reveal {
+  .link-hover {
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0% 1px;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    transition: background-size 600ms var(--ease-architect);
+    padding-bottom: 0.1em;
+    transition: background-size 500ms var(--ease-calm);
   }
-  .link-reveal:hover,
-  .group:hover .link-reveal {
-    background-size: 100% 1px;
+  @media (hover: hover) {
+    .link:hover {
+      background-size: 0% 1px;
+      background-position: 100% 100%;
+    }
+    .link-hover:hover,
+    .group:hover .link-hover {
+      background-size: 100% 1px;
+    }
   }
-}
 
-/* Arrow nudge used in CTAs. */
-.arrow {
-  display: inline-block;
-  transition: transform 500ms var(--ease-architect);
-}
-@media (hover: hover) {
-  a:hover .arrow,
-  button:hover .arrow {
-    transform: translateX(0.3em);
+  /* Slow, slight image lean on hover. */
+  .img-zoom img {
+    transition: transform 1400ms var(--ease-calm);
   }
-}
-
-/* Image hover: slow, slight scale, the "leaning in to look at the grain" feeling. */
-.img-zoom img {
-  transition: transform 1600ms var(--ease-architect);
-}
-@media (hover: hover) {
-  .group:hover .img-zoom img,
-  .img-zoom:hover img {
-    transform: scale(1.035);
+  @media (hover: hover) {
+    .group:hover .img-zoom img,
+    .img-zoom:hover img {
+      transform: scale(1.025);
+    }
   }
-}
 
-/* Visually hidden. */
-.sr-only-focusable:not(:focus):not(:focus-within) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
+  /* Visually hidden until focused (skip link). */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Form fields: hairline underline, no boxes. */
+  .field {
+    display: block;
+  }
+  .field-label {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-mute);
+    margin-bottom: 0.25rem;
+  }
+  .field-input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-line-strong);
+    padding: 0.55rem 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+    color: var(--color-ink);
+    transition: border-color 300ms;
+  }
+  select.field-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23130e0a'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-right: 1.5rem;
+  }
+  .field-input::placeholder {
+    color: rgb(19 14 10 / 0.38);
+  }
+  .field-input:focus {
+    outline: none;
+    border-color: var(--color-ink);
+  }
+  .field-input[aria-invalid="true"] {
+    border-color: #8a2f1f;
+  }
 }
 
 /* -------------------------------------------------------------------------------------------------
-   Motion
-   All reveal states only apply when JS is running (html.js) and motion is allowed.
+   Motion: deliberately minimal. A short fade-up on scroll, a slow marquee. Nothing else.
+   Content is never hidden without JS or with reduced motion.
    ---------------------------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: no-preference) {
   html.js [data-reveal] {
-    transition-property: opacity, transform, clip-path;
-    transition-duration: var(--dur-reveal);
-    transition-timing-function: var(--ease-architect);
-    transition-delay: calc(var(--d, 0) * 1ms);
-  }
-  html.js [data-reveal="up"]:not([data-shown]) {
-    opacity: 0;
-    transform: translate3d(0, 1.75rem, 0);
-  }
-  html.js [data-reveal="fade"]:not([data-shown]) {
-    opacity: 0;
-  }
-  /* Image rises from the floor line, like a board being laid.
-     The clip is applied to the children: a fully clipped element would never report an intersection. */
-  html.js [data-reveal="rise"] > *,
-  html.js [data-reveal="wipe"] > * {
-    transition: clip-path 1500ms var(--ease-curtain);
-    transition-delay: calc(var(--d, 0) * 1ms);
-  }
-  html.js [data-reveal="rise"]:not([data-shown]) > * {
-    clip-path: inset(100% 0 0 0);
-  }
-  html.js [data-reveal="wipe"]:not([data-shown]) > * {
-    clip-path: inset(0 100% 0 0);
-  }
-  html.js [data-reveal="rise"] img {
     transition:
-      clip-path 1500ms var(--ease-curtain),
-      transform 1900ms var(--ease-architect);
+      opacity 900ms var(--ease-calm),
+      transform 900ms var(--ease-calm);
     transition-delay: calc(var(--d, 0) * 1ms);
   }
-  html.js [data-reveal="rise"]:not([data-shown]) img {
-    transform: scale(1.12);
-  }
-  /* Headline lines slide up from behind their own baseline. */
-  html.js [data-reveal="lines"] .line > span {
-    display: inline-block;
-    transition: transform 1200ms var(--ease-architect);
-    transition-delay: calc((var(--d, 0) + var(--i, 0) * 110) * 1ms);
-  }
-  html.js [data-reveal="lines"]:not([data-shown]) .line > span {
-    transform: translate3d(0, 108%, 0);
-  }
-  /* Ruled lines draw in. */
-  html.js [data-reveal="rule"] {
-    transform-origin: left center;
-    transition: transform 1400ms var(--ease-curtain);
-    transition-delay: calc(var(--d, 0) * 1ms);
-  }
-  html.js [data-reveal="rule"]:not([data-shown]) {
-    transform: scaleX(0);
+  html.js [data-reveal]:not([data-shown]) {
+    opacity: 0;
+    transform: translate3d(0, 0.9rem, 0);
   }
 
-  /* Page entrance (template.tsx). */
-  .page-enter {
-    animation: page-enter 900ms var(--ease-architect) both;
-  }
-  @keyframes page-enter {
-    from {
-      opacity: 0;
-      transform: translate3d(0, 14px, 0);
-    }
-  }
-
-  /* Subtle parallax via scroll-driven animations (progressive enhancement, no JS). */
-  @supports (animation-timeline: view()) {
-    .parallax img {
-      animation: parallax linear both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 100%;
-      scale: 1.14;
-    }
-    @keyframes parallax {
-      from {
-        translate: 0 -5%;
-      }
-      to {
-        translate: 0 5%;
-      }
-    }
-  }
-}
-
-@layer components {
-.line {
-  display: block;
-  overflow: hidden;
-  /* Room for descenders and diacritics (Ć, Š, Ž) while masking. */
-  padding-block: 0.06em 0.1em;
-  margin-block: -0.06em -0.1em;
-}
-}
-
-/* Marquee for the manufacturer list (paused for reduced motion). */
-@media (prefers-reduced-motion: no-preference) {
   .marquee-track {
-    animation: marquee 60s linear infinite;
-  }
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
+    animation: marquee 48s linear infinite;
   }
 }
+
 @keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
   to {
     transform: translate3d(-50%, 0, 0);
   }
-}
-
-/* -------------------------------------------------------------------------------------------------
-   Forms
-   ---------------------------------------------------------------------------------------------- */
-
-@layer components {
-.field {
-  position: relative;
-  display: block;
-}
-.field-input {
-  width: 100%;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--color-line-strong);
-  border-radius: 0;
-  padding: 1.75rem 0 0.7rem;
-  font-size: 1.0625rem;
-  line-height: 1.4;
-  color: var(--color-ink);
-  transition: border-color 300ms;
-  appearance: none;
-}
-.field-input:focus {
-  outline: none;
-  border-bottom-color: var(--color-ink);
-  box-shadow: 0 1px 0 0 var(--color-ink);
-}
-.field-input[aria-invalid="true"] {
-  border-bottom-color: #8a2f1f;
-}
-.field-label {
-  position: absolute;
-  left: 0;
-  top: 0.35rem;
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 550;
-  color: var(--color-mute);
-}
-textarea.field-input {
-  resize: vertical;
-  min-height: 7.5rem;
-}
-select.field-input {
-  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
-    linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position:
-    calc(100% - 10px) calc(1.75rem + 0.55em),
-    calc(100% - 5px) calc(1.75rem + 0.55em);
-  background-size: 5px 5px;
-  background-repeat: no-repeat;
-  padding-right: 1.5rem;
-}
-}
-
-/* Body scroll lock when the menu or a lightbox is open. */
-html.is-locked,
-html.is-locked body {
-  overflow: hidden;
 }

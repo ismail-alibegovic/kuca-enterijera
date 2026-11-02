@@ -3,7 +3,7 @@ import { categories, categoryHref, productHref, products } from "@/content/catal
 import { absolute } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["/", "/kolekcije", "/inspiracija", "/o-nama", "/kontakt"].map((p) => ({
+  const pages = ["/", "/ponuda", "/o-nama", "/kontakt"].map((p) => ({
     url: absolute(p),
     changeFrequency: "monthly" as const,
     priority: p === "/" ? 1 : 0.8,

@@ -1,35 +1,37 @@
 import type { Metadata } from "next";
-import { CategoryIndex } from "@/components/home/CategoryIndex";
-import { FeaturedBoards } from "@/components/home/FeaturedBoards";
+import { Doors } from "@/components/home/Doors";
+import { Floors } from "@/components/home/Floors";
 import { Hero } from "@/components/home/Hero";
-import { InspirationTeaser } from "@/components/home/InspirationTeaser";
 import { Intro } from "@/components/home/Intro";
-import { MaterialStory } from "@/components/home/MaterialStory";
+import { Marquee } from "@/components/home/Marquee";
+import { Offer } from "@/components/home/Offer";
+import { ParquetFeature } from "@/components/home/ParquetFeature";
 import { Partners } from "@/components/home/Partners";
-import { ShowroomCta } from "@/components/home/ShowroomCta";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
+const title = "Kuća Enterijera: parketi, podne obloge i sigurnosna vrata, Sarajevo";
+
 export const metadata: Metadata = {
-  ...pageMetadata({
-    title: "Kuća Enterijera: parketi, podne obloge i sigurnosna vrata, Sarajevo",
-    description: site.description,
-    path: "/",
-  }),
-  title: { absolute: "Kuća Enterijera: parketi, podne obloge i sigurnosna vrata, Sarajevo" },
+  ...pageMetadata({ title, description: site.description, path: "/" }),
+  title: { absolute: title },
 };
 
+/**
+ * Customer journey: who we are → what we sell → parquet first → other floors → doors →
+ * whose products → visit the showroom / ask for a quote (closing block in the footer).
+ */
 export default function Home() {
   return (
     <>
       <Hero />
       <Intro />
-      <CategoryIndex />
-      <FeaturedBoards />
-      <MaterialStory />
-      <InspirationTeaser />
-      <Partners index="07" />
-      <ShowroomCta index="08" />
+      <Marquee />
+      <Offer />
+      <ParquetFeature />
+      <Floors />
+      <Doors />
+      <Partners />
     </>
   );
 }

@@ -1,132 +1,109 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
+import Link from "next/link";
 import { Partners } from "@/components/home/Partners";
-import { ShowroomCta } from "@/components/home/ShowroomCta";
-import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { Lines } from "@/components/ui/Lines";
+import { PageIntro } from "@/components/page/PageIntro";
 import { Photo } from "@/components/ui/Photo";
-import { PlankGrid } from "@/components/ui/PlankGrid";
-import { SectionLabel } from "@/components/ui/SectionLabel";
-import { categories, serviceAreas } from "@/content/catalog";
+import { serviceAreas } from "@/content/catalog";
+import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "O nama: parketni centar Kuća Enterijera, Sarajevo",
+  title: "O nama: parketni centar u Sarajevu",
   description:
-    "Kuća Enterijera je parketni centar u Sarajevu. Prodajemo isključivo visokokvalitetne proizvode svjetski priznatih i domaćih proizvođača, uz stručan savjet i izložbeni salon.",
+    "Kuća Enterijera je parketni centar u Sarajevu. Prodajemo isključivo kvalitetne proizvode svjetski priznatih i domaćih proizvođača: parkete, podne obloge, sigurnosna vrata Dierre i više.",
   path: "/o-nama",
-  image: "oakQuietRoom",
+  image: "bedroomOak",
 });
 
-const advantages = [
-  { title: "Nove tehnologije", text: "Želimo vam pružiti najviši nivo usluge i proizvode izrađene najnovijim tehnologijama." },
-  { title: "Izložbeni salon", text: "U salonu možete pogledati proizvode najboljih svjetskih i domaćih proizvođača." },
-  { title: "Stručnost i posvećenost", text: "Naši zaposlenici su educirani stručnjaci s višegodišnjim iskustvom u svojim oblastima." },
+/** Taken from "Naše prednosti" on the existing site (the ISO claim is omitted until confirmed). */
+const strengths = [
+  { name: "Izložbeni salon", text: "U salonu možete pogledati proizvode i uzorke te dio našeg asortimana." },
+  { name: "Stručnost i posvećenost", text: "Naši zaposlenici su educirani stručnjaci s višegodišnjim iskustvom u svom području." },
+  { name: "Provjereni proizvođači", text: "Prodajemo isključivo kvalitetne proizvode svjetski priznatih i domaćih proizvođača." },
+  { name: "Savjet prije kupovine", text: "Saslušamo šta vam treba i predložimo rješenje prema prostoru, namjeni i budžetu." },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden" aria-labelledby="onama-title">
-        <PlankGrid className="opacity-60" />
-        <div className="shell relative pt-8 pb-20 md:pb-28">
-          <Breadcrumbs items={[{ name: "Početna", path: "/" }, { name: "O nama", path: "/o-nama" }]} />
-          <div className="grid-12 mt-10 gap-y-10 md:mt-14">
-            <Lines
-              as="h1"
-              id="onama-title"
-              className="t-mega col-span-4 md:col-span-12"
-              lines={["Kuća", <span key="2" className="md:pl-[2.2em]">Enterijera</span>]}
-            />
-            <div className="col-span-4 md:col-span-5 md:col-start-1 md:mt-10">
-              <Photo id="oakQuietRoom" preload sizes="(min-width: 768px) 40vw, 100vw" className="aspect-[4/5]" tag />
-            </div>
-            <div className="col-span-4 flex flex-col justify-end md:col-span-6 md:col-start-7">
-              <p className="t-statement" suppressHydrationWarning data-reveal="up">
-                Parketni centar u Sarajevu, gdje na jednom mjestu birate proizvode najboljih svjetskih i domaćih proizvođača,{" "}
-                <span className="t-serif-italic text-oak-deep">uz savjet ljudi koji ih poznaju.</span>
-              </p>
-              <p className="t-lead mt-8 max-w-[52ch] text-ink/75" suppressHydrationWarning data-reveal="up" style={{ "--d": 150 } as CSSProperties}>
-                Prodajemo samo visokokvalitetne proizvode svjetski priznatih proizvođača. Kao partnera posebno izdvajamo talijansku kompaniju Dierre, jednog od svjetskih lidera u proizvodnji sigurnosnih vrata.
-              </p>
-              <p className="t-lead mt-6 max-w-[52ch] text-ink/75" suppressHydrationWarning data-reveal="up" style={{ "--d": 250 } as CSSProperties}>
-                Recite nam šta vam treba, a naše stručno i ljubazno osoblje predložit će vam najbolje moguće rješenje.
-              </p>
-            </div>
+      <PageIntro
+        id="o-nama-title"
+        title={
+          <>
+            Parketni centar —
+            <br />u Sarajevu
+          </>
+        }
+        text="U našem salonu možete pogledati proizvode najboljih svjetskih i domaćih proizvođača: parkete, podne obloge, sigurnosna vrata i sve što je potrebno za njihovo postavljanje i njegu."
+        crumbs={[
+          { name: "Naslovna", path: "/" },
+          { name: "O nama", path: "/o-nama" },
+        ]}
+        thumb="corridorDoors"
+        wide="bedroomOak"
+        wideCaption={["Iz arhive Kuće Enterijera", `${site.showroom.street}, ${site.showroom.city}`]}
+      />
+
+      <section className="shell pt-24 md:pt-40" aria-labelledby="pristup-title">
+        <div className="grid-12 gap-y-10">
+          <Photo
+            id="oakStudy"
+            sizes="(min-width: 768px) 42vw, 100vw"
+            className="col-span-4 md:col-span-5"
+            frameClassName="aspect-[4/5] md:aspect-[7/8]"
+            caption="Hrastov pod i zidna obloga · Foto: ITLAS"
+          />
+          <div className="col-span-4 flex flex-col md:col-span-6 md:col-start-7">
+            <h2 id="pristup-title" className="t-statement indent" data-reveal="" suppressHydrationWarning>
+              <span className="italic">Recite nam</span> šta vam treba — naše stručno i ljubazno osoblje predložit će vam
+              najbolje moguće rješenje.
+            </h2>
+            <p className="t-small mt-10 max-w-[40ch] text-ink/80 md:mt-auto md:pt-16">
+              Posebno izdvajamo našeg partnera za sigurnosna vrata, talijansku kompaniju Dierre, jednog od svjetskih lidera u
+              proizvodnji blindiranih vrata. Za postavljanje i njegu drvenih podova nudimo program proizvođača Chimiver.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="on-dark bg-charcoal text-paper" aria-labelledby="ponuda-title">
-        <div className="shell grid-12 gap-y-10 py-20 md:py-28">
-          <div className="col-span-4 md:col-span-3">
-            <p className="t-label text-paper/70">Šta nudimo</p>
-          </div>
-          <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="ponuda-title" className="t-h1" suppressHydrationWarning data-reveal="up">
-              Od poda do ulaznih vrata, <span className="t-serif-italic text-sand">i sve između.</span>
-            </h2>
-            <ol className="mt-12 border-t border-paper/25">
-              {categories.map((c) => (
-                <li key={c.slug} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-paper/15 py-4 md:grid-cols-[3rem_1fr_1fr]">
-                  <span className="t-index text-paper/65">{c.index}</span>
-                  <span className="t-h3">{c.name}</span>
-                  <span className="t-small col-start-2 text-paper/60 md:col-start-auto">{c.kicker}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
+      <section className="shell pt-24 md:pt-40" aria-labelledby="prednosti-title">
+        <div className="grid-12 gap-y-10">
+          <h2 id="prednosti-title" className="t-statement indent col-span-4 md:col-span-6">
+            Zašto kupci biraju salon, a ne samo katalog.
+          </h2>
+          <ul className="col-span-4 border-t border-line-strong md:col-span-7 md:col-start-6">
+            {strengths.map((s) => (
+              <li key={s.name} className="grid gap-x-8 gap-y-1 border-b border-line py-5 md:grid-cols-2 md:py-6">
+                <span className="t-h3">{s.name}</span>
+                <span className="t-small text-ink/80">{s.text}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      <section aria-labelledby="prednosti-title">
-        <div className="shell grid-12 gap-y-10 py-20 md:py-28">
-          <div className="col-span-4 md:col-span-3">
-            <SectionLabel>Zašto mi</SectionLabel>
-          </div>
-          <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="prednosti-title" className="t-h2" suppressHydrationWarning data-reveal="up">
-              Ono što nas izdvaja
-            </h2>
-            <dl className="mt-10 border-t border-ink">
-              {advantages.map((a, i) => (
-                <div key={a.title} className="grid gap-2 border-b border-line py-6 md:grid-cols-8 md:gap-[var(--col-gap)]" suppressHydrationWarning data-reveal="up" style={{ "--d": i * 100 } as CSSProperties}>
-                  <dt className="flex items-baseline gap-4 md:col-span-3">
-                    <span className="t-index text-mute">0{i + 1}</span>
-                    <span className="t-h3">{a.title}</span>
-                  </dt>
-                  <dd className="t-body text-ink/75 md:col-span-5">{a.text}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+      <section className="shell pt-24 md:pt-36" aria-labelledby="prostori-title">
+        <div className="grid-12 gap-y-6">
+          <h2 id="prostori-title" className="t-caption col-span-4 text-mute md:col-span-3">
+            Za koje prostore
+          </h2>
+          <ul className="col-span-4 grid gap-x-[var(--col-gap)] gap-y-6 sm:grid-cols-3 md:col-span-8 md:col-start-5">
+            {serviceAreas.map((a) => (
+              <li key={a.name} className="border-t border-line-strong pt-4">
+                <p className="t-body">{a.name}</p>
+                <p className="t-small mt-2 text-ink/75">{a.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
-
-      <section className="bg-paper-2" aria-labelledby="usluge-title">
-        <div className="shell grid-12 gap-y-10 py-20 md:py-28">
-          <div className="col-span-4 md:col-span-3">
-            <SectionLabel>Područja rada</SectionLabel>
-          </div>
-          <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="usluge-title" className="t-h2">
-              Rezidencijalni, poslovni <span className="t-serif-italic">i komercijalni prostori</span>
-            </h2>
-            <ul className="mt-10 grid gap-px border border-line bg-line md:grid-cols-3">
-              {serviceAreas.map((s, i) => (
-                <li key={s.name} className="bg-paper p-6">
-                  <p className="t-index text-mute">0{i + 1}</p>
-                  <p className="t-h3 mt-3">{s.name}</p>
-                  <p className="t-small mt-2 text-ink/70">{s.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <p className="t-small mt-12">
+          <Link href="/ponuda" className="link">
+            Pogledajte ponudu
+          </Link>
+        </p>
       </section>
 
       <Partners />
-      <ShowroomCta />
     </>
   );
 }

@@ -3,9 +3,8 @@
 import { useEffect } from "react";
 
 /**
- * One observer for the whole site. Server components opt in with `data-reveal="up|fade|rise|wipe|lines|rule"`
- * and an optional `style={{ "--d": 120 }}` delay. Reveal styles only apply under `html.js` and
- * `prefers-reduced-motion: no-preference`, so content is never hidden without JS or with reduced motion.
+ * One observer for the whole site. Elements opt in with `data-reveal` (and an optional `--d` delay).
+ * Styles only apply under `html.js` and `prefers-reduced-motion: no-preference`.
  */
 export function RevealRoot() {
   useEffect(() => {
@@ -18,7 +17,7 @@ export function RevealRoot() {
           }
         }
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.05 },
     );
     const scan = (root: ParentNode) =>
       root.querySelectorAll("[data-reveal]:not([data-shown])").forEach((el) => io.observe(el));

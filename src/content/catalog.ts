@@ -123,7 +123,7 @@ export type Category = {
   intro: string;
   /** Long-form, category-specific editorial copy. Kept factual. */
   body: string[];
-  hero: MediaKey;
+  hero?: MediaKey;
   heroAlt?: MediaKey;
   materials: string;
   seoTitle: string;
@@ -143,12 +143,12 @@ export const categories: Category[] = [
       "Kod višeslojnog parketa gornji sloj je od plemenitog drveta: hrasta, jasena, javora, bukve, bagrema, parene trešnje, parene kruške, parenog oraha ili kestena. Klasični masivni parket izrađuje se od hrasta, bukve i jasena, u raznim dimenzijama i klasama.",
       "Za prostore s izraženijim karakterom nudimo i masivne parkete od egzotičnih vrsta, poput jatobe, afričkog teaka i wengea iz Konga. Ove vrste odlikuju tvrdoća i otpornost.",
     ],
-    hero: "herringboneTimberCeiling",
-    heroAlt: "herringbonePortrait",
+    hero: "oakPlanks",
+    heroAlt: "oakStudy",
     materials: "Hrast · Jasen · Orah · Jatoba · Wenge",
     seoTitle: "Parketi Sarajevo: troslojni, dvoslojni i masivni parket",
     seoDescription:
-      "Troslojni, dvoslojni i masivni parket od hrasta, jasena, oraha i egzotičnih vrsta. Pogledajte uzorke u salonu Kuća Enterijera, Alipašina 55, Sarajevo.",
+      "Troslojni, dvoslojni i masivni parket od hrasta, jasena, oraha i egzotičnih vrsta. Pogledajte uzorke u salonu Kuća Enterijera, Hiseta 19, Sarajevo.",
   },
   {
     slug: "pvc-i-tekstilni-podovi",
@@ -162,8 +162,8 @@ export const categories: Category[] = [
       "PVC podne obloge mogu trajati oko dvadeset godina. Pritom je važno odabrati kvalitetu prema namjeni prostora, profesionalno pripremiti podlogu i stručno postaviti pod.",
       "Tekstilne podne obloge dolaze u velikom izboru gramatura, gustoća tkanja, dizajna i boja. Zato se koriste svugdje, od ureda do najprometnijih hotelskih hodnika.",
     ],
-    hero: "carpetBoardroom",
-    heroAlt: "vinylEmptyRoom",
+    hero: "lvtRestaurant",
+    heroAlt: "carpetOffice",
     materials: "PVC · Tekstil",
     seoTitle: "PVC podne obloge i tekstilni podovi Sarajevo",
     seoDescription:
@@ -180,8 +180,6 @@ export const categories: Category[] = [
       "WPC je kratica za Wood Polymer Composite. To je materijal od drvene piljevine uprešane s polimerima koji ne štete okolišu, a u Sjevernoj Americi se uspješno proizvodi više od dvadeset godina.",
       "Najčešće se koristi na otvorenom: na terasama, uz bazene i na balkonima.",
     ],
-    hero: "deckAerial",
-    heroAlt: "indoorOutdoorDeck",
     materials: "WPC kompozit",
     seoTitle: "WPC vanjske podne obloge i terase, Sarajevo",
     seoDescription:
@@ -199,8 +197,8 @@ export const categories: Category[] = [
       "Ulazna vrata su granica između vašeg doma i ostatka svijeta, ali i prvo što gost vidi. Zato pri odabiru jednako važe sigurnost i izgled.",
       "U salonu vam pomažemo odabrati model iz ponude kompanije Dierre i pripremiti ponudu prema vašem prostoru.",
     ],
-    hero: "frontDoorFacade",
-    heroAlt: "hallDoor",
+    hero: "doorInterior",
+    heroAlt: "doorLock",
     materials: "Blindirana vrata",
     seoTitle: "Sigurnosna vrata Sarajevo: Dierre blindirana ulazna vrata",
     seoDescription:
@@ -217,8 +215,6 @@ export const categories: Category[] = [
     body: [
       "Ponudu kancelarijskog namještaja prilagođavamo potrebama različitih kupaca. Uz veliki izbor modela i dekora, svaka kancelarija može biti privlačna, ugodna za rad i usklađena s vašim zahtjevima za dizajn i funkcionalnost.",
     ],
-    hero: "officeLounge",
-    heroAlt: "officeWindow",
     materials: "Modeli i dekori po izboru",
     seoTitle: "Kancelarijski namještaj Sarajevo",
     seoDescription:
@@ -235,8 +231,8 @@ export const categories: Category[] = [
     body: [
       "Asortiman obuhvata ljepila za drvene podove, temeljne i završne lakove, ulja za unutarnje i vanjske drvene podove, tekućine za kitanje te sredstva za čišćenje i održavanje.",
     ],
-    hero: "oakSideboard",
-    heroAlt: "darkPlanks",
+    hero: "adhesiveTrowel",
+    heroAlt: "oiledFloor",
     materials: "Ljepila · Lakovi · Ulja",
     seoTitle: "Ljepila, lakovi i ulja za parket: Chimiver, Sarajevo",
     seoDescription:
@@ -258,6 +254,7 @@ export type Product = {
   tagline: string;
   summary: string;
   description: string[];
+  /** Only verified, relevant images. Empty when no authentic image exists. */
   images: MediaKey[];
   material: Material;
   applications: Application[];
@@ -286,7 +283,7 @@ export const products: Product[] = [
       "Višeslojni parket spaja izgled punog drveta s konstrukcijom u dva ili tri sloja. Osnovni, vidljivi materijal je visokovrijedno drvo.",
       "U ponudi su hrast, jasen, javor, bukva, bagrem, parena trešnja, parena kruška, pareni orah i kesten. Imamo i parkete od egzotičnog drveta.",
     ],
-    images: ["herringboneLiving", "herringbonePortrait", "oakQuietRoom"],
+    images: ["oakFloorChair", "bedroomOak", "livingWide"],
     material: "drvo",
     applications: ["dom", "poslovni"],
     constructions: ["dvoslojni", "troslojni"],
@@ -305,7 +302,7 @@ export const products: Product[] = [
       "Klasični masivni parket izrađuje se od punog drveta domaćih vrsta. Nudimo kvalitetne parkete od hrasta, bukve i jasena u raznim dimenzijama i klasama.",
       "Daje prostoru topao, prirodan izgled i jednostavno se održava.",
     ],
-    images: ["oakQuietRoom", "staircaseOak", "oakDeskPlaster"],
+    images: ["livingDark", "oakPlanks"],
     material: "drvo",
     applications: ["dom", "poslovni"],
     constructions: ["masivni"],
@@ -325,7 +322,7 @@ export const products: Product[] = [
       "Egzotične vrste drveta dolaze iz svih krajeva svijeta i odlikuju se tvrdoćom i otpornošću.",
       "U ponudi su, među ostalim, jatoba, teak Afrika i wenge Kongo. Raspoložive vrste provjerite u salonu.",
     ],
-    images: ["darkPlanks", "warmLiving", "livingWoodWall"],
+    images: [],
     material: "drvo",
     applications: ["dom", "poslovni"],
     constructions: ["masivni"],
@@ -344,7 +341,7 @@ export const products: Product[] = [
       "PVC podovi mogu biti iznimno dugotrajni, oko dvadeset godina.",
       "Za takvu trajnost važno je odabrati kvalitetu primjerenu prostoru, profesionalno pripremiti podlogu i stručno postaviti pod. U tome vam pomažemo od prvog razgovora.",
     ],
-    images: ["vinylEmptyRoom", "resilientCorridor"],
+    images: ["lvtRestaurant"],
     material: "pvc",
     applications: ["dom", "poslovni"],
     specs: [
@@ -365,7 +362,7 @@ export const products: Product[] = [
       "Tekstilna podna obloga je dekorativni element interijera. Bojom, tkanjem, strukturom ili uzorkom povezuje ostale elemente u skladnu cjelinu i prostoru daje toplinu.",
       "Veliki izbor gramatura, gustoća tkanja, dizajna i boja omogućava primjenu u svim prostorima, od poslovnih prostora i ureda do najprometnijih hodnika velikih hotela. Cijena je povoljna, niža nego kod drugih podnih obloga.",
     ],
-    images: ["carpetBoardroom", "carpetLounge"],
+    images: ["carpetOffice", "carpetTweed"],
     material: "tekstil",
     applications: ["poslovni", "dom"],
     specs: [
@@ -386,7 +383,7 @@ export const products: Product[] = [
       "WPC (Wood Polymer Composite) materijal se uspješno proizvodi više od dvadeset godina u Sjevernoj Americi i najviše se ugrađuje na otvorenim prostorima.",
       "Sastoji se od drvene piljevine uprešane s polimerima koji ne štete okolišu.",
     ],
-    images: ["deckAerial", "indoorOutdoorDeck", "glassPavilion"],
+    images: [],
     material: "wpc",
     applications: ["vanjski"],
     specs: [{ label: "Sastav", value: "Drvena piljevina uprešana s polimerima koji ne štete okolišu" }],
@@ -404,7 +401,7 @@ export const products: Product[] = [
       "Ulazna vrata su granica između vašeg doma i cijelog svijeta i prvi znak vaše osobnosti.",
       "Nudimo široku paletu sigurnosnih ulaznih vrata kompanije Dierre iz Italije, koja je među vodećim svjetskim proizvođačima blindiranih vrata.",
     ],
-    images: ["frontDoorFacade", "darkDoorArmchair", "hallDoor"],
+    images: ["doorInterior", "doorVilla", "doorLock"],
     material: "vrata",
     applications: ["dom", "poslovni"],
     manufacturers: ["dierre"],
@@ -423,7 +420,7 @@ export const products: Product[] = [
       "Ponuda kancelarijskog namještaja namijenjena je širokom krugu kupaca i može se prilagoditi vašim potrebama.",
       "Uz bogat izbor modela i mogućnost odabira dekora, svaka kancelarija može biti privlačna i ugodna za rad te ispuniti vaše kriterije dizajna i funkcionalnosti.",
     ],
-    images: ["officeLounge", "officeWindow", "lobbySlats"],
+    images: [],
     material: "namjestaj",
     applications: ["poslovni"],
     specs: [{ label: "Prilagodba", value: "Izbor modela i dekora" }],
@@ -440,7 +437,7 @@ export const products: Product[] = [
     description: [
       "Chimiver stalno proširuje asortiman, a danas obuhvata sve što je potrebno za postavljanje, završnu obradu i njegu drvenih podova.",
     ],
-    images: ["oakSideboard", "darkPlanks"],
+    images: ["adhesiveTrowel", "oiledFloor"],
     material: "zavrsna-obrada",
     applications: ["dom", "poslovni", "vanjski"],
     manufacturers: ["chimiver"],
@@ -468,8 +465,8 @@ export const productBySlug = Object.fromEntries(products.map((p) => [p.slug, p])
 
 export const productsInCategory = (slug: string) => products.filter((p) => p.category === slug);
 
-export const productHref = (p: Product) => `/kolekcije/${p.category}/${p.slug}`;
-export const categoryHref = (c: Category | string) => `/kolekcije/${typeof c === "string" ? c : c.slug}`;
+export const productHref = (p: Product) => `/ponuda/${p.category}/${p.slug}`;
+export const categoryHref = (c: Category | string) => `/ponuda/${typeof c === "string" ? c : c.slug}`;
 
 /** Service areas named on the current homepage. */
 export const serviceAreas = [

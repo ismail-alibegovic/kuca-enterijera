@@ -9,7 +9,7 @@ export function pageMetadata({
   title,
   description,
   path,
-  image = "herringboneLiving",
+  image = "oakFloorChair",
   noindex = false,
 }: {
   title: string;
@@ -45,8 +45,8 @@ export function localBusinessJsonLd() {
     name: site.name,
     description: site.description,
     url: site.url,
-    image: absolute(media.herringboneLiving.src.src),
-    logo: absolute("/brand/proposal/mark-mono.svg"),
+    image: absolute(media.oakFloorChair.src.src),
+    logo: absolute("/brand/original/ke-logo.png"),
     telephone: site.contact.phones.map((p) => p.href.replace("tel:", "")),
     email: site.contact.emails.map((e) => e.display),
     address: {
