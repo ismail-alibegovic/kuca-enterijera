@@ -2,89 +2,91 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Cta } from "@/components/ui/Cta";
 import { Lines } from "@/components/ui/Lines";
-import { Photo } from "@/components/ui/Photo";
-import { PlankGrid } from "@/components/ui/PlankGrid";
 import { categories, categoryHref } from "@/content/catalog";
 import { site } from "@/content/site";
+import { HeroStage, type HeroSlide } from "./HeroStage";
 
+const slides: HeroSlide[] = [
+  { id: "herringboneLiving", caption: "Dnevni boravak · drveni pod u otvorenom prostoru", focus: "50% 72%", mobileFocus: "72% 80%" },
+  { id: "oakQuietRoom", caption: "Spavaća soba · podne daske uz terasu", focus: "40% 70%", mobileFocus: "18% 70%" },
+  { id: "warmLiving", caption: "Dnevni boravak · tamni drveni pod", focus: "45% 78%", mobileFocus: "30% 80%" },
+  { id: "hallDoor", caption: "Hodnik · tamna vrata i svijetli pod", focus: "50% 60%", mobileFocus: "47% 60%" },
+];
+
+/**
+ * First viewport. The headline stands on the floor line (the same line the logo's wordmark stands on);
+ * the photographs below it are laid like boards.
+ */
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative overflow-hidden">
-      <PlankGrid className="opacity-70" />
-
-      <div className="shell relative">
-        {/* Top rail */}
-        <div className="grid-12 pt-6 pb-8 md:pt-6 md:pb-6">
-          <p className="t-label col-span-3 md:col-span-4" suppressHydrationWarning data-reveal="fade">
+    <section aria-labelledby="hero-title" className="relative">
+      <div className="shell flex min-h-[calc(100svh-var(--header-h))] flex-col pb-6 md:pb-8">
+        {/* Rail */}
+        <div className="flex items-baseline justify-between gap-6 pt-5 pb-6 md:pt-6 md:pb-4">
+          <p className="t-label flex items-center gap-3">
+            <span aria-hidden className="inline-block h-2 w-2 bg-roof" />
             {site.tagline}
           </p>
-          <p className="t-index col-span-1 text-right text-mute md:col-span-2 md:col-start-9 md:text-left" suppressHydrationWarning data-reveal="fade">
-            Nº 01
-          </p>
-          <p className="t-label col-span-2 hidden text-right text-mute md:col-start-11 md:block" suppressHydrationWarning data-reveal="fade">
-            {site.showroom.street}, {site.showroom.city}
+          <p className="t-label hidden text-mute sm:block">
+            Salon · {site.showroom.street}, {site.showroom.city}
           </p>
         </div>
 
-        {/* Headline × image composition, standing on the floor line */}
-        <div className="grid-12 relative border-b border-ink pb-0">
+        {/* Headline × actions, standing on the floor line */}
+        <div className="grid-12 items-end gap-y-8 border-b-2 border-ink pb-6 md:pb-5">
           <Lines
             as="h1"
             id="hero-title"
-            className="t-mega col-span-4 md:col-span-7 md:col-start-1 md:row-start-1 md:self-end md:pb-[0.04em]"
+            delay={150}
+            className="t-mega col-span-4 md:col-span-8 lg:col-span-8"
             lines={[
-              "Prostor",
-              <span key="b" className="md:pl-[1.15em]">počinje</span>,
-              <span key="c" className="t-serif-italic text-oak-deep md:pl-[0.55em]">
+              "Prostor počinje",
+              <span key="b" className="t-serif-italic pr-[0.08em] text-oak-deep">
                 od poda.
               </span>,
             ]}
           />
-
-          <div className="relative col-span-4 mt-10 md:col-span-4 md:col-start-9 md:row-start-1 md:mt-0">
-            <Photo
-              id="oakDeskPlaster"
-              preload
-              sizes="(min-width: 768px) 34vw, 100vw"
-              className="aspect-[4/5] md:aspect-auto md:h-[min(60svh,42rem)]"
-              tag
-            />
-          </div>
-
-          {/* Small detail plate, offset like a sample pinned to the wall */}
-          <div className="hidden md:col-span-1 md:col-start-8 md:row-start-1 md:block md:self-end" aria-hidden>
-            <Photo id="herringbonePortrait" sizes="9vw" className="aspect-[3/4] w-full" delay={450} reveal="rise" />
-            <span className="mb-3 block" />
+          <div className="col-span-4 flex flex-col gap-6 md:col-span-4 md:pb-[0.6em] lg:col-span-3 lg:col-start-10">
+            <p className="t-lead max-w-[34ch] text-ink/80">
+              Parketi, podne obloge, sigurnosna vrata te sve za njihovu ugradnju i njegu. Uzorke vidite i dodirnete u našem salonu u Sarajevu.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Cta href="/kolekcije">Istražite kolekcije</Cta>
+              <Cta href="/kontakt#upit" variant="line">
+                Zatražite ponudu
+              </Cta>
+            </div>
           </div>
         </div>
 
-        {/* Beneath the floor line: what we sell, and the two actions */}
-        <div className="grid-12 gap-y-10 pt-8 pb-20 md:pt-8 md:pb-28">
-          <p className="t-lead col-span-4 max-w-[38ch] text-ink/85 md:col-span-6 lg:col-span-4" suppressHydrationWarning data-reveal="up" style={{ "--d": 250 } as CSSProperties}>
-            Parketi, podne obloge, sigurnosna vrata i sve za njihovu ugradnju i njegu. Pogledajte uzorke u našem salonu u Sarajevu.
-          </p>
-          <div className="col-span-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6 md:col-span-6 md:justify-end lg:col-span-4 lg:justify-start" suppressHydrationWarning data-reveal="up" style={{ "--d": 350 } as CSSProperties}>
-            <Cta href="/kolekcije" className="w-full sm:w-auto">
-              Istražite kolekcije
-            </Cta>
-            <Cta href="/kontakt#upit" variant="line">
-              Zatražite ponudu
-            </Cta>
-          </div>
-          <nav aria-label="Kolekcije" className="col-span-4 md:col-span-12 lg:col-span-4" suppressHydrationWarning data-reveal="up" style={{ "--d": 450 } as CSSProperties}>
-            <ul className="grid grid-cols-2 gap-x-6 border-t border-line md:grid-cols-3 lg:grid-cols-2">
-              {categories.map((c) => (
-                <li key={c.slug} className="border-b border-line">
-                  <Link href={categoryHref(c)} className="group flex items-baseline gap-2.5 py-2.5">
-                    <span className="t-index text-mute">{c.index}</span>
-                    <span className="t-small link-reveal">{c.short}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        {/* The floor: interiors laid plank by plank */}
+        <div className="mt-4 flex h-[62svh] min-h-[22rem] flex-col md:mt-5 md:h-auto md:min-h-[24rem] md:flex-1">
+          <HeroStage slides={slides} />
         </div>
       </div>
+
+      {/* Collections index, directly under the first viewport */}
+      <nav aria-label="Kolekcije" className="shell">
+        <ul className="grid grid-cols-2 border-t border-line sm:grid-cols-3 lg:grid-cols-6">
+          {categories.map((c, i) => (
+            <li
+              key={c.slug}
+              className="border-b border-line lg:border-b-0 lg:px-4 lg:first:pl-0 lg:[&:not(:first-child)]:border-l"
+              suppressHydrationWarning
+              data-reveal="up"
+              style={{ "--d": 80 * i } as CSSProperties}
+            >
+              <Link href={categoryHref(c)} className="group flex h-full items-baseline gap-3 py-4 lg:py-5">
+                <span className="t-index text-mute">{c.index}</span>
+                <span className="t-small link-reveal">{c.short}</span>
+                <span aria-hidden className="arrow t-index ml-auto pr-3 text-mute transition-colors group-hover:text-ink">
+                  →
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </section>
   );
 }

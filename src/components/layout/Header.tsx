@@ -9,6 +9,7 @@ import { categories, categoryHref } from "@/content/catalog";
 import { media } from "@/content/media";
 import { nav, primaryPhone } from "@/content/site";
 import { MobileMenu } from "./MobileMenu";
+import { useLogoIntro } from "./useLogoIntro";
 
 export function Header() {
   const pathname = usePathname();
@@ -22,6 +23,8 @@ export function Header() {
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  useLogoIntro(logoRef);
 
   // Close everything on navigation (adjusting state during render, per React guidance).
   const [lastPath, setLastPath] = useState(pathname);
@@ -101,8 +104,8 @@ export function Header() {
           }`}
         >
           <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
-            <Link href="/" className="relative z-10 -my-2 py-2" aria-label="Kuća Enterijera, početna stranica">
-              <Logo />
+            <Link ref={logoRef} href="/" className="logo-intro relative z-10 -my-2 py-2" aria-label="Kuća Enterijera, početna stranica">
+              <Logo className="h-7 w-auto md:h-9" />
             </Link>
 
             <nav aria-label="Glavna navigacija" className="hidden lg:block">

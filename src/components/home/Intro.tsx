@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { Photo } from "@/components/ui/Photo";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { Split } from "@/components/motion/Split";
 
 const principles = [
   {
@@ -24,13 +25,13 @@ export function Intro() {
         <div className="col-span-4 md:col-span-3">
           <SectionLabel index="02">Kuća Enterijera</SectionLabel>
         </div>
-        <h2 id="intro-title" className="t-statement col-span-4 md:col-span-8 md:col-start-4" suppressHydrationWarning data-reveal="up">
+        <h2 id="intro-title" className="t-statement col-span-4 md:col-span-8 md:col-start-4" suppressHydrationWarning data-scrub="words"><Split mask={false}>
           Parketni centar u srcu Sarajeva. Biramo proizvođače kojima vjerujemo i savjetujemo vas{" "}
           <span className="t-serif-italic text-oak-deep">od prvog uzorka do posljednje daske.</span>
-        </h2>
+        </Split></h2>
 
         <div className="col-span-3 col-start-2 md:col-span-2 md:col-start-1 md:row-start-3 md:mt-24">
-          <Photo id="oakSideboard" sizes="(min-width: 768px) 16vw, 70vw" className="aspect-[4/5]" tag />
+          <Photo id="herringbonePortrait" sizes="(min-width: 768px) 16vw, 70vw" className="aspect-[4/5]" parallax={6} tag />
         </div>
 
         <dl className="col-span-4 border-t border-ink md:col-span-8 md:col-start-4 md:row-start-3">

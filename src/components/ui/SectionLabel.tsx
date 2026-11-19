@@ -5,7 +5,7 @@ export function SectionLabel({ index, children, className = "" }: { index?: stri
   return (
     <p className={`t-label flex items-center gap-3 ${className}`} suppressHydrationWarning data-reveal="fade">
       {index ? <span className="t-index tracking-normal text-mute">Nº {index}</span> : null}
-      {index ? <span aria-hidden className="h-px w-8 bg-current opacity-40" /> : null}
+      {index ? <span aria-hidden className="h-1.5 w-1.5 bg-roof" /> : null}
       <span>{children}</span>
     </p>
   );

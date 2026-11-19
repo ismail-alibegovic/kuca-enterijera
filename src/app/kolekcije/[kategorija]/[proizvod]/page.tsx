@@ -24,6 +24,7 @@ import {
 import { media } from "@/content/media";
 import { primaryPhone } from "@/content/site";
 import { absolute, pageMetadata } from "@/lib/seo";
+import { Split } from "@/components/motion/Split";
 
 /**
  * Every real slug is prerendered via generateStaticParams, so navigation to them is instant.
@@ -99,10 +100,10 @@ export default async function ProductPage({ params }: PageProps<"/kolekcije/[kat
             <div className="md:sticky md:top-[calc(var(--header-h)+1.5rem)]">
               <p className="t-label flex items-center gap-3 text-mute">
                 <span className="t-index tracking-normal">Nº {c.index}</span>
-                <span aria-hidden className="h-px w-8 bg-current opacity-40" />
+                <span aria-hidden className="h-1.5 w-1.5 bg-roof" />
                 {c.short}
               </p>
-              <h1 className="t-h1 mt-6">{p.name}</h1>
+              <h1 className="t-h1 mt-6" suppressHydrationWarning data-split=""><Split>{p.name}</Split></h1>
               <p className="t-serif-italic mt-3 text-[1.5rem] leading-tight text-oak-deep">{p.tagline}</p>
               <p className="t-body mt-6 text-ink/80">{p.summary}</p>
 
@@ -146,9 +147,9 @@ export default async function ProductPage({ params }: PageProps<"/kolekcije/[kat
             <SectionLabel>Opis</SectionLabel>
           </div>
           <div className="col-span-4 md:col-span-7 md:col-start-5">
-            <h2 id="opis-title" className="t-statement" suppressHydrationWarning data-reveal="up">
+            <h2 id="opis-title" className="t-statement" suppressHydrationWarning data-split=""><Split>
               {p.description[0]}
-            </h2>
+            </Split></h2>
             {p.description.slice(1).map((d, i) => (
               <p key={i} className="t-lead mt-8 max-w-[60ch] text-ink/75" suppressHydrationWarning data-reveal="up" style={{ "--d": 120 } as CSSProperties}>
                 {d}
@@ -194,9 +195,9 @@ export default async function ProductPage({ params }: PageProps<"/kolekcije/[kat
               <SectionLabel>Vrste drveta</SectionLabel>
             </div>
             <div className="col-span-4 md:col-span-8 md:col-start-5">
-              <h2 id="vrste-title" className="t-h2">
+              <h2 id="vrste-title" className="t-h2" suppressHydrationWarning data-split=""><Split>
                 Dostupne vrste <span className="t-serif-italic">· {p.species.length}</span>
-              </h2>
+              </Split></h2>
               <div className="mt-8">
                 <SpeciesChips slugs={p.species} />
               </div>
@@ -210,9 +211,9 @@ export default async function ProductPage({ params }: PageProps<"/kolekcije/[kat
 
       {related.length ? (
         <section className="shell py-20 md:py-28" aria-labelledby="povezano-title">
-          <h2 id="povezano-title" className="t-h2 mb-12">
+          <h2 id="povezano-title" className="t-h2 mb-12" suppressHydrationWarning data-split=""><Split>
             Povezane <span className="t-serif-italic">linije proizvoda</span>
-          </h2>
+          </Split></h2>
           <div className="grid gap-x-[var(--col-gap)] gap-y-12 md:grid-cols-3">
             {related.map((r, i) => (
               <SampleBoard key={r.slug} product={r} aspect="aspect-[4/3]" delay={i * 90} />

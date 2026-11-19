@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Lines } from "@/components/ui/Lines";
 import { products } from "@/content/catalog";
 import { pageMetadata } from "@/lib/seo";
+import { Split } from "@/components/motion/Split";
 
 export const metadata: Metadata = pageMetadata({
   title: "Kolekcije: parketi, podne obloge i sigurnosna vrata",
@@ -34,9 +35,9 @@ export default function CollectionsPage() {
 
       <section className="shell py-20 md:py-28" aria-labelledby="sve-linije">
         <div className="grid-12 mb-10 items-end gap-y-4">
-          <h2 id="sve-linije" className="t-h1 col-span-4 md:col-span-7" suppressHydrationWarning data-reveal="up">
+          <h2 id="sve-linije" className="t-h1 col-span-4 md:col-span-7" suppressHydrationWarning data-split=""><Split>
             Sve linije proizvoda
-          </h2>
+          </Split></h2>
           <p className="t-small col-span-4 text-mute md:col-span-4 md:col-start-9">
             Katalog prikazuje linije proizvoda. Pojedinačne modele, dekore, dimenzije i dostupnost provjerite u salonu ili putem upita.
           </p>

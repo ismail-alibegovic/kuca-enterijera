@@ -41,6 +41,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
   return (
     <div
       id="mobile-menu"
+      data-lenis-prevent
       ref={ref}
       role="dialog"
       aria-modal="true"

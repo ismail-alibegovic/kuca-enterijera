@@ -46,7 +46,7 @@ export function localBusinessJsonLd() {
     description: site.description,
     url: site.url,
     image: absolute(media.herringboneLiving.src.src),
-    logo: absolute("/brand/proposal/mark-mono.svg"),
+    logo: absolute("/brand/ke-logo.svg"),
     telephone: site.contact.phones.map((p) => p.href.replace("tel:", "")),
     email: site.contact.emails.map((e) => e.display),
     address: {

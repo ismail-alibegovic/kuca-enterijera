@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark } from "@/components/brand/Logo";
+import { LogoSvg } from "@/components/brand/Logo";
 import { categories, categoryHref } from "@/content/catalog";
 import { fullAddress, mapsUrl, nav, site } from "@/content/site";
 
@@ -8,8 +8,7 @@ export function Footer() {
     <footer className="on-dark relative overflow-hidden bg-ink text-paper">
       <div className="shell grid-12 gap-y-12 pt-20 pb-10 md:pt-28">
         <div className="col-span-4 md:col-span-4">
-          <LogoMark tone="inverse" className="h-12 w-12" />
-          <p className="t-statement mt-8 max-w-[18ch] text-[1.75rem]! text-paper/90">
+          <p className="t-statement max-w-[18ch] text-[1.75rem]! text-paper/90">
             Dođite vidjeti, dodirnuti <span className="t-serif-italic">i odabrati.</span>
           </p>
         </div>
@@ -80,12 +79,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Giant wordmark standing on the floor line. */}
-      <div className="shell" aria-hidden>
-        <div className="border-b border-paper/25 pb-2">
-          <p className="whitespace-nowrap text-center font-sans text-[10.4vw] font-[430] leading-[0.8] tracking-[-0.055em] text-paper max-[120rem]:text-[10.4vw] min-[120rem]:text-[12rem]">
-            KUĆA ENTERIJERA
-          </p>
+      {/* The logo at architectural scale: the wordmark stands on its own floor line. */}
+      <div className="shell pt-6 pb-4 md:pt-10" suppressHydrationWarning data-reveal="wipe">
+        <div>
+          <LogoSvg inverse title={null} className="block h-auto w-full" />
         </div>
       </div>
 
@@ -94,9 +91,6 @@ export function Footer() {
         <p className="t-small flex gap-5">
           <Link href="/napomene" className="hover:text-paper">
             Napomene o sadržaju i fotografijama
-          </Link>
-          <Link href="/brand" className="hover:text-paper">
-            Prijedlog identiteta
           </Link>
         </p>
       </div>

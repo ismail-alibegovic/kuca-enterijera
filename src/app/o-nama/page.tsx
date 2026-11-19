@@ -9,6 +9,7 @@ import { PlankGrid } from "@/components/ui/PlankGrid";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { categories, serviceAreas } from "@/content/catalog";
 import { pageMetadata } from "@/lib/seo";
+import { Split } from "@/components/motion/Split";
 
 export const metadata: Metadata = pageMetadata({
   title: "O nama: parketni centar Kuća Enterijera, Sarajevo",
@@ -63,9 +64,9 @@ export default function AboutPage() {
             <p className="t-label text-paper/70">Šta nudimo</p>
           </div>
           <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="ponuda-title" className="t-h1" suppressHydrationWarning data-reveal="up">
+            <h2 id="ponuda-title" className="t-h1" suppressHydrationWarning data-split=""><Split>
               Od poda do ulaznih vrata, <span className="t-serif-italic text-sand">i sve između.</span>
-            </h2>
+            </Split></h2>
             <ol className="mt-12 border-t border-paper/25">
               {categories.map((c) => (
                 <li key={c.slug} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-paper/15 py-4 md:grid-cols-[3rem_1fr_1fr]">
@@ -85,9 +86,9 @@ export default function AboutPage() {
             <SectionLabel>Zašto mi</SectionLabel>
           </div>
           <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="prednosti-title" className="t-h2" suppressHydrationWarning data-reveal="up">
+            <h2 id="prednosti-title" className="t-h2" suppressHydrationWarning data-split=""><Split>
               Ono što nas izdvaja
-            </h2>
+            </Split></h2>
             <dl className="mt-10 border-t border-ink">
               {advantages.map((a, i) => (
                 <div key={a.title} className="grid gap-2 border-b border-line py-6 md:grid-cols-8 md:gap-[var(--col-gap)]" suppressHydrationWarning data-reveal="up" style={{ "--d": i * 100 } as CSSProperties}>
@@ -109,9 +110,9 @@ export default function AboutPage() {
             <SectionLabel>Područja rada</SectionLabel>
           </div>
           <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="usluge-title" className="t-h2">
+            <h2 id="usluge-title" className="t-h2" suppressHydrationWarning data-split=""><Split>
               Rezidencijalni, poslovni <span className="t-serif-italic">i komercijalni prostori</span>
-            </h2>
+            </Split></h2>
             <ul className="mt-10 grid gap-px border border-line bg-line md:grid-cols-3">
               {serviceAreas.map((s, i) => (
                 <li key={s.name} className="bg-paper p-6">

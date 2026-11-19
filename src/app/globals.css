@@ -18,6 +18,11 @@
   --color-line-strong: rgb(23 25 22 / 0.28);
   --color-line-inverse: rgb(244 240 232 / 0.16);
 
+  /* From the logo: the roof and the leaf. Used sparingly, as signals, never as surfaces. */
+  --color-roof: #f0941d;
+  --color-leaf: #7ab648;
+  --color-leaf-deep: #4d7a2e;
+
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
 
@@ -257,63 +262,35 @@ body {
 }
 
 /* -------------------------------------------------------------------------------------------------
-   Motion
-   All reveal states only apply when JS is running (html.js) and motion is allowed.
+   Motion (GSAP + Lenis, see components/motion/MotionRoot.tsx)
+   CSS only holds the *initial* hidden states, and only when JS runs (html.js), motion is allowed and the
+   failsafe has not fired (html.motion-off). GSAP animates from these states to the final ones.
    ---------------------------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: no-preference) {
-  html.js [data-reveal] {
-    transition-property: opacity, transform, clip-path;
-    transition-duration: var(--dur-reveal);
-    transition-timing-function: var(--ease-architect);
-    transition-delay: calc(var(--d, 0) * 1ms);
-  }
-  html.js [data-reveal="up"]:not([data-shown]) {
-    opacity: 0;
-    transform: translate3d(0, 1.75rem, 0);
-  }
-  html.js [data-reveal="fade"]:not([data-shown]) {
+  html.js:not(.motion-off) [data-reveal="up"]:not([data-shown]),
+  html.js:not(.motion-off) [data-reveal="fade"]:not([data-shown]) {
     opacity: 0;
   }
-  /* Image rises from the floor line, like a board being laid.
-     The clip is applied to the children: a fully clipped element would never report an intersection. */
-  html.js [data-reveal="rise"] > *,
-  html.js [data-reveal="wipe"] > * {
-    transition: clip-path 1500ms var(--ease-curtain);
-    transition-delay: calc(var(--d, 0) * 1ms);
-  }
-  html.js [data-reveal="rise"]:not([data-shown]) > * {
+  html.js:not(.motion-off) [data-reveal="rise"]:not([data-shown]) > * {
     clip-path: inset(100% 0 0 0);
   }
-  html.js [data-reveal="wipe"]:not([data-shown]) > * {
+  html.js:not(.motion-off) [data-reveal="wipe"]:not([data-shown]) > * {
     clip-path: inset(0 100% 0 0);
   }
-  html.js [data-reveal="rise"] img {
-    transition:
-      clip-path 1500ms var(--ease-curtain),
-      transform 1900ms var(--ease-architect);
-    transition-delay: calc(var(--d, 0) * 1ms);
-  }
-  html.js [data-reveal="rise"]:not([data-shown]) img {
-    transform: scale(1.12);
-  }
-  /* Headline lines slide up from behind their own baseline. */
-  html.js [data-reveal="lines"] .line > span {
-    display: inline-block;
-    transition: transform 1200ms var(--ease-architect);
-    transition-delay: calc((var(--d, 0) + var(--i, 0) * 110) * 1ms);
-  }
-  html.js [data-reveal="lines"]:not([data-shown]) .line > span {
-    transform: translate3d(0, 108%, 0);
-  }
-  /* Ruled lines draw in. */
-  html.js [data-reveal="rule"] {
-    transform-origin: left center;
-    transition: transform 1400ms var(--ease-curtain);
-    transition-delay: calc(var(--d, 0) * 1ms);
-  }
-  html.js [data-reveal="rule"]:not([data-shown]) {
+  html.js:not(.motion-off) [data-reveal="rule"]:not([data-shown]) {
     transform: scaleX(0);
+  }
+  html.js:not(.motion-off) [data-split]:not([data-shown]) {
+    visibility: hidden;
+  }
+  /* Header logo: parts wait for the draw-in (useLogoIntro.ts). */
+  html.js:not(.motion-off) .logo-intro:not([data-drawn]) [data-logo-part] {
+    opacity: 0;
+  }
+  /* Hero: the first photograph waits below the floor line until its planks are laid (HeroStage.tsx). */
+  html.js:not(.motion-off) .hero-stage [data-layer="0"] [data-plank] {
+    --t: 1;
   }
 
   /* Page entrance (template.tsx). */
@@ -323,37 +300,43 @@ body {
   @keyframes page-enter {
     from {
       opacity: 0;
-      transform: translate3d(0, 14px, 0);
-    }
-  }
-
-  /* Subtle parallax via scroll-driven animations (progressive enhancement, no JS). */
-  @supports (animation-timeline: view()) {
-    .parallax img {
-      animation: parallax linear both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 100%;
-      scale: 1.14;
-    }
-    @keyframes parallax {
-      from {
-        translate: 0 -5%;
-      }
-      to {
-        translate: 0 5%;
-      }
     }
   }
 }
 
+.hero-stage [data-plank] {
+  --t: 0;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Word split (splitWords.ts). Masks leave room for diacritics (Ć, Š, Ž) and italic overhang. */
 @layer components {
-.line {
-  display: block;
-  overflow: hidden;
-  /* Room for descenders and diacritics (Ć, Š, Ž) while masking. */
-  padding-block: 0.06em 0.1em;
-  margin-block: -0.06em -0.1em;
-}
+  .w {
+    display: inline-block;
+  }
+  .w-mask {
+    overflow: hidden;
+    vertical-align: top;
+    padding: 0.1em 0.08em 0.14em 0;
+    margin: -0.1em -0.08em -0.14em 0;
+  }
+  .wi {
+    display: inline-block;
+  }
+  .split-visual {
+    display: contents;
+  }
 }
 
 /* Marquee for the manufacturer list (paused for reduced motion). */
@@ -431,4 +414,22 @@ select.field-input {
 html.is-locked,
 html.is-locked body {
   overflow: hidden;
+}
+
+/* Paper grain: a fixed, static texture that gives flat surfaces the tooth of a printed sample card. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background-image: url("/textures/grain.png");
+  background-size: 128px 128px;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+@media print {
+  body::after {
+    display: none;
+  }
 }

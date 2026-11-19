@@ -2,10 +2,11 @@ import { SampleBoard } from "@/components/catalog/SampleBoard";
 import { Cta } from "@/components/ui/Cta";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { productBySlug } from "@/content/catalog";
+import { Split } from "@/components/motion/Split";
 
 const featured = ["dvoslojni-i-troslojni-parket", "klasicni-masivni-parket", "egzoticni-masivni-parket", "dierre-sigurnosna-vrata"];
 // Staggered like boards leaning against a showroom wall.
-const offsets = ["md:mt-0", "md:mt-28", "md:mt-12", "md:mt-40"];
+const offsets = ["md:mt-0", "md:mt-20", "md:mt-0", "md:mt-20"];
 
 export function FeaturedBoards() {
   return (
@@ -15,9 +16,9 @@ export function FeaturedBoards() {
           <div className="col-span-4 md:col-span-3">
             <SectionLabel index="04">Iz ponude</SectionLabel>
           </div>
-          <h2 id="uzorci-title" className="t-h1 col-span-4 md:col-span-6" suppressHydrationWarning data-reveal="up">
+          <h2 id="uzorci-title" className="t-h1 col-span-4 md:col-span-6" suppressHydrationWarning data-split=""><Split>
             Uzorci koje ćete <span className="t-serif-italic">poželjeti dodirnuti</span>
-          </h2>
+          </Split></h2>
           <p className="t-body col-span-4 text-ink/75 md:col-span-3" suppressHydrationWarning data-reveal="up">
             Izdvojene linije proizvoda. Pravi uzorci, boje i dimenzije čekaju vas u salonu.
           </p>

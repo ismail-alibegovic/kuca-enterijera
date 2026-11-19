@@ -31,15 +31,17 @@ export function Photo({
   preload?: boolean;
   tag?: boolean | "dark";
   zoom?: boolean;
-  parallax?: boolean;
+  /** Scrubbed drift inside the frame; a number sets the travel in % (default 8). */
+  parallax?: boolean | number;
   alt?: string;
   focus?: string;
 }) {
   const m = media[id];
   return (
     <figure
-      className={`relative overflow-hidden bg-paper-2 ${zoom ? "img-zoom" : ""} ${parallax ? "parallax" : ""} ${className}`}
+      className={`relative overflow-hidden bg-paper-2 ${zoom ? "img-zoom" : ""} ${className}`}
       suppressHydrationWarning data-reveal={reveal || undefined}
+      data-parallax={parallax ? (parallax === true ? "" : String(parallax)) : undefined}
       style={{ "--d": delay } as CSSProperties}
     >
       <Image

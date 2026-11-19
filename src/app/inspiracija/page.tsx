@@ -7,6 +7,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { serviceAreas } from "@/content/catalog";
 import { realProjects } from "@/content/inspiration";
 import { pageMetadata } from "@/lib/seo";
+import { Split } from "@/components/motion/Split";
 
 export const metadata: Metadata = pageMetadata({
   title: "Inspiracija: parket, podne obloge i materijali u prostoru",
@@ -47,9 +48,9 @@ export default function InspirationPage() {
             <SectionLabel>Realizirani projekti</SectionLabel>
           </div>
           <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="projekti-title" className="t-h1">
+            <h2 id="projekti-title" className="t-h1" suppressHydrationWarning data-split=""><Split>
               {realProjects.length ? "Naši projekti" : <>Galeriju realiziranih projekata <span className="t-serif-italic">pripremamo.</span></>}
-            </h2>
+            </Split></h2>
             <p className="t-lead mt-6 max-w-[56ch] text-ink/75">
               Dugogodišnje iskustvo i kvalitet rada omogućili su nam saradnju s mnogobrojnim kompanijama koje su lideri u svojim oblastima u Bosni i Hercegovini. Za reference za određenu vrstu prostora pitajte nas u salonu.
             </p>

@@ -6,6 +6,7 @@ import { Lines } from "@/components/ui/Lines";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { mapsUrl, site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
+import { Split } from "@/components/motion/Split";
 
 export const metadata: Metadata = pageMetadata({
   title: "Salon i kontakt: Alipašina 55, Sarajevo",
@@ -75,13 +76,13 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section id="upit" className="scroll-mt-24 border-t border-ink bg-paper-2" aria-labelledby="upit-title">
+      <section id="upit" className="border-t border-ink bg-paper-2" aria-labelledby="upit-title">
         <div className="shell grid-12 gap-y-12 py-20 md:py-28">
           <div className="col-span-4 md:col-span-4">
             <SectionLabel>Upit i ponuda</SectionLabel>
-            <h2 id="upit-title" className="t-h1 mt-6">
+            <h2 id="upit-title" className="t-h1 mt-6" suppressHydrationWarning data-split=""><Split>
               Zatražite <span className="t-serif-italic">ponudu.</span>
-            </h2>
+            </Split></h2>
             <p className="t-body mt-6 max-w-[38ch] text-ink/75">
               Napišite koji proizvod vas zanima, približnu površinu i gdje se prostor nalazi. Što više znamo, to preciznija može biti ponuda.
             </p>
@@ -106,9 +107,9 @@ export default function ContactPage() {
       <section className="shell grid-12 gap-y-8 py-20 md:py-28" aria-labelledby="karta-title">
         <div className="col-span-4 md:col-span-4">
           <SectionLabel>Lokacija</SectionLabel>
-          <h2 id="karta-title" className="t-h2 mt-6">
+          <h2 id="karta-title" className="t-h2 mt-6" suppressHydrationWarning data-split=""><Split>
             Salon <span className="t-serif-italic">u ulici Alipašina</span>
-          </h2>
+          </Split></h2>
           <p className="t-body mt-6 max-w-[36ch] text-ink/75">
             U salonu na adresi {site.showroom.street} u Sarajevu možete pogledati dio našeg asortimana.
           </p>

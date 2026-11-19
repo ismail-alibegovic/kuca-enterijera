@@ -10,7 +10,7 @@ export function ShowroomCta({ index }: { index?: string }) {
         <div className="col-span-4 md:col-span-6">
           <p className="t-label flex items-center gap-3" suppressHydrationWarning data-reveal="fade">
             {index ? <span className="t-index tracking-normal text-mute">Nº {index}</span> : null}
-            {index ? <span aria-hidden className="h-px w-8 bg-current opacity-40" /> : null}
+            {index ? <span aria-hidden className="h-1.5 w-1.5 bg-roof" /> : null}
             Salon
           </p>
           <Lines

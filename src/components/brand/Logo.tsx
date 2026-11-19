@@ -1,82 +1,50 @@
-import Image from "next/image";
-import { site } from "@/content/site";
+import { ACCENT, BRAND, HOUSE, LEAF, ROOF, STEM, TEXT } from "./logoPaths";
 
 /**
- * PROPOSED modernised identity (pending client approval). The original logo is preserved in
- * /public/brand/original and can be restored via `site.brandLogo = "original"`.
+ * The original Kuća Enterijera logo, redrawn as a vector from the client's 233×60 px PNG
+ * (preserved untouched in /public/brand/original). Orange roof, green house outline with the leaf
+ * growing out of the floor, and the wordmark standing on the same floor line.
  *
- * Construction: the walls form a square; the leaf is the intersection of two quarter-circles
- * drawn with a compass from the square's opposite corners; the midrib is the square's diagonal.
+ * `data-logo-part` hooks let the motion system draw the logo in on first load.
  */
-export function LogoMark({
+export function LogoSvg({
+  inverse = false,
   className,
-  tone = "duo",
-  title,
+  title = "Kuća Enterijera",
+  markOnly = false,
 }: {
+  inverse?: boolean;
   className?: string;
-  tone?: "duo" | "mono" | "inverse";
-  title?: string;
+  title?: string | null;
+  markOnly?: boolean;
 }) {
-  const ink = tone === "inverse" ? "var(--color-paper)" : "var(--color-ink)";
-  const leaf = tone === "duo" ? "var(--color-oak)" : ink;
-  const rib = tone === "inverse" ? "var(--color-ink)" : "var(--color-paper)";
+  const ink = inverse ? "var(--color-paper)" : BRAND.ink;
   return (
     <svg
-      viewBox="0 0 48 48"
+      viewBox={markOnly ? "3.6 14.2 35 29" : "3.5 13.8 223.6 30"}
       className={className}
       role={title ? "img" : undefined}
       aria-hidden={title ? undefined : true}
-      aria-label={title}
+      aria-label={title ?? undefined}
+      data-logo
     >
-      <path d="M10 44 V17 L24 5 L38 17 V44 Z" fill="none" stroke={ink} strokeWidth="1.9" strokeLinejoin="miter" />
-      <path d="M10 44 A28 28 0 0 1 38 16 A28 28 0 0 1 10 44 Z" fill={leaf} />
-      <path d="M10 44 L38 16" stroke={rib} strokeWidth="1.1" />
+      <path data-logo-part="roof" d={ROOF} fill={BRAND.orange} />
+      <g fill="none" stroke={BRAND.green}>
+        <path data-logo-part="house" d={HOUSE} pathLength={1} strokeWidth="1.35" strokeLinecap="square" />
+        <path data-logo-part="leaf" d={LEAF} pathLength={1} strokeWidth="1.25" />
+        <path data-logo-part="leaf" d={STEM} pathLength={1} strokeWidth="1.25" strokeLinecap="round" />
+        {markOnly ? null : <path data-logo-part="accent" d={ACCENT} pathLength={1} strokeWidth=".95" />}
+      </g>
+      {markOnly ? null : (
+        <>
+          <path data-logo-part="text" d={TEXT} fill={ink} stroke={ink} strokeWidth=".9" strokeLinejoin="round" />
+          <rect data-logo-part="floor" x="42.6" y="41.6" width="183.8" height="1.4" fill={ink} />
+        </>
+      )}
     </svg>
   );
 }
 
-/** The small leaf that replaces the acute accent on Ć, a nod to the original wordmark. */
-function AccentLeaf() {
-  return (
-    <svg viewBox="0 0 10 10" aria-hidden className="absolute left-[calc(50%-0.1em)] top-[-0.34em] h-[0.4em] w-[0.4em] -translate-x-[40%]">
-      <path d="M1 9 A8 8 0 0 1 9 1 A8 8 0 0 1 1 9 Z" fill="currentColor" />
-    </svg>
-  );
-}
-
-export function Wordmark({ className }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-baseline whitespace-nowrap font-sans font-[560] uppercase tracking-[0.2em] ${className ?? ""}`}>
-      <span aria-hidden className="inline-flex">
-        KU
-        <span className="relative">
-          C
-          <AccentLeaf />
-        </span>
-        A&nbsp;ENTERIJERA
-      </span>
-      <span className="sr-only">Kuća Enterijera</span>
-    </span>
-  );
-}
-
-export function Logo({ inverse = false, compact = false }: { inverse?: boolean; compact?: boolean }) {
-  if (site.brandLogo === "original") {
-    return (
-      <Image
-        src="/brand/original/ke-logo.png"
-        alt="Kuća Enterijera"
-        width={233}
-        height={60}
-        className={`h-9 w-auto ${inverse ? "invert" : ""}`}
-        preload
-      />
-    );
-  }
-  return (
-    <span className="inline-flex items-center gap-3">
-      <LogoMark className="h-8 w-8 shrink-0" tone={inverse ? "inverse" : "duo"} />
-      <Wordmark className={`text-[0.78rem] ${compact ? "max-sm:hidden" : ""}`} />
-    </span>
-  );
+export function Logo({ inverse = false, className = "h-8 w-auto md:h-9" }: { inverse?: boolean; className?: string }) {
+  return <LogoSvg inverse={inverse} className={className} />;
 }

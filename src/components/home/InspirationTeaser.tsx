@@ -3,6 +3,7 @@ import { Cta } from "@/components/ui/Cta";
 import { Photo } from "@/components/ui/Photo";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { inspiration, spaceLabels } from "@/content/inspiration";
+import { Split } from "@/components/motion/Split";
 
 /** Asymmetric collage: four frames at four different scales. */
 const layout = [
@@ -20,9 +21,9 @@ export function InspirationTeaser() {
           <div className="col-span-4 md:col-span-3">
             <SectionLabel index="06">Inspiracija</SectionLabel>
           </div>
-          <h2 id="inspiracija-title" className="t-h1 col-span-4 md:col-span-6" suppressHydrationWarning data-reveal="up">
+          <h2 id="inspiracija-title" className="t-h1 col-span-4 md:col-span-6" suppressHydrationWarning data-split=""><Split>
             Prostori koji počinju <span className="t-serif-italic">od materijala</span>
-          </h2>
+          </Split></h2>
           <p className="t-small col-span-4 text-mute md:col-span-3" suppressHydrationWarning data-reveal="up">
             Ideje za dom, ured i javne prostore, uz linije iz naše ponude koje se uklapaju.
           </p>

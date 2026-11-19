@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { media } from "@/content/media";
 import { site } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
+import { Split } from "@/components/motion/Split";
 
 export const metadata: Metadata = pageMetadata({
   title: "Napomene o sadržaju i fotografijama",
@@ -17,7 +17,7 @@ export default function NotesPage() {
   return (
     <div className="shell pt-8 pb-24">
       <Breadcrumbs items={[{ name: "Početna", path: "/" }, { name: "Napomene", path: "/napomene" }]} />
-      <h1 className="t-h1 mt-10 max-w-[20ch]">Napomene o sadržaju i fotografijama</h1>
+      <h1 className="t-h1 mt-10 max-w-[20ch]" suppressHydrationWarning data-split=""><Split>Napomene o sadržaju i fotografijama</Split></h1>
       <div className="t-body mt-10 max-w-[68ch] space-y-5 text-ink/80">
         <p>
           Podaci o ponudi, proizvođačima i kontaktu preuzeti su s postojeće web stranice {site.name}. Gdje podatak nije bio dostupan (npr. dimenzije,
@@ -27,13 +27,13 @@ export default function NotesPage() {
           Fotografije prostora preuzete su s postojeće web stranice kuca-enterijera.ba. Prije objave ih treba zamijeniti autentičnim fotografijama
           proizvoda, salona i projekata ili potvrditi pravo korištenja.
         </p>
+        <p>
+          Logo Kuće Enterijera je vektorski precrtan s originalne slike na postojećoj web stranici kako bi bio oštar na svim ekranima. Boje i
+          proporcije su preuzete s originala.
+        </p>
         <p>Logotipi proizvođača preuzeti su s postojeće web stranice i prikazani jednobojno radi ujednačenosti.</p>
         <p>
-          Tonovi vrsta drveta su orijentacijski. Stvarnu boju uvijek provjerite na uzorku. Prijedlog novog vizualnog identiteta opisan je na stranici{" "}
-          <Link href="/brand" className="link-line">
-            Prijedlog identiteta
-          </Link>
-          .
+          Tonovi vrsta drveta su orijentacijski. Stvarnu boju uvijek provjerite na uzorku.
         </p>
       </div>
 

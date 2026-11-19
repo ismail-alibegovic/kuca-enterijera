@@ -24,6 +24,7 @@ import {
 } from "@/content/catalog";
 import { media } from "@/content/media";
 import { pageMetadata } from "@/lib/seo";
+import { Split } from "@/components/motion/Split";
 
 /**
  * Every real slug is prerendered via generateStaticParams, so navigation to them is instant.
@@ -75,7 +76,7 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
           <div className="col-span-4 flex flex-col md:col-span-6">
             <p className="t-label flex items-center gap-3" suppressHydrationWarning data-reveal="fade">
               <span className="t-index tracking-normal text-mute">Nº {c.index}</span>
-              <span aria-hidden className="h-px w-8 bg-current opacity-40" />
+              <span aria-hidden className="h-1.5 w-1.5 bg-roof" />
               {c.kicker}
             </p>
             <Lines as="h1" id="cat-title" className="t-display mt-8" lines={c.name.split(" i ").length === 2 && c.name.length > 16 ? [c.name.split(" i ")[0], <span key="2" className="t-serif-italic">i {c.name.split(" i ")[1]}</span>] : [c.name]} />
@@ -107,9 +108,9 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
             <SectionLabel>O kolekciji</SectionLabel>
           </div>
           <div className="col-span-4 md:col-span-8 md:col-start-5">
-            <h2 id="o-kategoriji" className="t-statement" suppressHydrationWarning data-reveal="up">
+            <h2 id="o-kategoriji" className="t-statement" suppressHydrationWarning data-split=""><Split>
               {c.body[0]}
-            </h2>
+            </Split></h2>
             {c.body.slice(1).map((b, i) => (
               <p key={i} className="t-lead mt-8 max-w-[60ch] text-ink/75" suppressHydrationWarning data-reveal="up">
                 {b}
@@ -128,11 +129,11 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
             </Link>
             <div className="col-span-4 flex flex-col md:col-span-4 md:col-start-9">
               <SectionLabel>Linija proizvoda</SectionLabel>
-              <h2 id="proizvod-title" className="t-h1 mt-6">
+              <h2 id="proizvod-title" className="t-h1 mt-6" suppressHydrationWarning data-split=""><Split>
                 <Link href={productHref(single)} className="link-reveal">
                   {single.name}
                 </Link>
-              </h2>
+              </Split></h2>
               <p className="t-body mt-5 text-ink/75">{single.summary}</p>
               <dl className="mt-8 border-t border-line">
                 <div className="flex justify-between gap-6 border-b border-line py-3">
@@ -155,9 +156,9 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
       ) : (
         <section id="linije" className="shell py-20 md:py-28" aria-labelledby="linije-title">
           <div className="grid-12 mb-10 items-end gap-y-4">
-            <h2 id="linije-title" className="t-h1 col-span-4 md:col-span-7" suppressHydrationWarning data-reveal="up">
+            <h2 id="linije-title" className="t-h1 col-span-4 md:col-span-7" suppressHydrationWarning data-split=""><Split>
               Linije proizvoda <span className="t-serif-italic">· {String(items.length).padStart(2, "0")}</span>
-            </h2>
+            </Split></h2>
             <p className="t-small col-span-4 text-mute md:col-span-4 md:col-start-9">
               Filtrirajte prema {facetsFor[c.slug]?.length ? "konstrukciji, porijeklu i vrsti" : "primjeni"}. Kombinacije bez rezultata su onemogućene.
             </p>
@@ -172,9 +173,9 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
           <div className="shell grid-12 gap-y-8 py-20 md:py-28">
             <div className="col-span-4 md:col-span-4">
               <SectionLabel>Indeks vrsta</SectionLabel>
-              <h2 id="vrste-title" className="t-h2 mt-6">
+              <h2 id="vrste-title" className="t-h2 mt-6" suppressHydrationWarning data-split=""><Split>
                 {catSpecies.length} vrsta drveta <span className="t-serif-italic">u ponudi</span>
-              </h2>
+              </Split></h2>
               <p className="t-small mt-6 max-w-[40ch] text-mute">{toneDisclaimer}</p>
             </div>
             <div className="col-span-4 md:col-span-7 md:col-start-6">
@@ -201,9 +202,9 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
               <div className="col-span-4 md:col-span-4">
                 <SectionLabel>Usporedba</SectionLabel>
               </div>
-              <h2 id="usporedba-title" className="t-h2 col-span-4 md:col-span-7 md:col-start-6">
+              <h2 id="usporedba-title" className="t-h2 col-span-4 md:col-span-7 md:col-start-6" suppressHydrationWarning data-split=""><Split>
                 Linije jedna uz drugu
-              </h2>
+              </Split></h2>
             </div>
             <ComparisonTable items={items} />
           </div>

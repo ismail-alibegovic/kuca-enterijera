@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Newsreader } from "next/font/google";
-import { RevealRoot } from "@/components/ui/RevealRoot";
+import { MotionRoot } from "@/components/motion/MotionRoot";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
@@ -45,8 +45,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="bs" className={`${instrument.variable} ${newsreader.variable}`} suppressHydrationWarning>
       <head>
-        {/* Enables reveal animations only when JS runs; content stays visible otherwise. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Reveal states apply only when JS runs. If the motion system has not started within 3 s
+            (slow network, blocked script), html.motion-off shows everything as static content. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "var d=document.documentElement;d.classList.add('js');setTimeout(function(){if(!d.classList.contains('motion-ready'))d.classList.add('motion-off')},3000)",
+          }}
+        />
       </head>
       <body>
         <a href="#sadrzaj" className="sr-only-focusable fixed left-4 top-4 z-[100] bg-ink px-4 py-3 text-paper">
@@ -58,7 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </main>
         <Footer />
         <MobileActionBar />
-        <RevealRoot />
+        <MotionRoot />
         <JsonLd data={localBusinessJsonLd()} />
       </body>
     </html>

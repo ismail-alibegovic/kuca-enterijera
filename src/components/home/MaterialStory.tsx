@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { PlankGrid } from "@/components/ui/PlankGrid";
 import { species } from "@/content/catalog";
 import { media, type MediaKey } from "@/content/media";
+import { Split } from "@/components/motion/Split";
 
 type Chapter = { key: string; title: string; italic: string; text: string; image: MediaKey; aside?: "species" | "link" };
 
@@ -15,7 +16,7 @@ const chapters: Chapter[] = [
     title: "Vrsta",
     italic: "dvanaest karaktera.",
     text: "Od svijetlog javora do gotovo crnog wengea, vrsta drveta određuje boju, crtež godova i to kako prostor djeluje ujutro i uvečer.",
-    image: "darkPlanks",
+    image: "herringboneLiving",
     aside: "species",
   },
   {
@@ -59,12 +60,12 @@ export function MaterialStory() {
         <div className="grid-12 gap-y-6">
           <p className="t-label col-span-4 flex items-center gap-3 text-paper/70 md:col-span-3" suppressHydrationWarning data-reveal="fade">
             <span className="t-index tracking-normal text-paper/65">Nº 05</span>
-            <span aria-hidden className="h-px w-8 bg-current opacity-40" />
+            <span aria-hidden className="h-1.5 w-1.5 bg-roof" />
             Materijal
           </p>
-          <h2 id="materijal-title" className="t-display col-span-4 md:col-span-9" suppressHydrationWarning data-reveal="up">
-            Drvo pamti <span className="t-serif-italic text-sand">svjetlo, korak i vrijeme.</span>
-          </h2>
+          <h2 id="materijal-title" className="t-display col-span-4 md:col-span-9" suppressHydrationWarning data-split=""><Split>
+            <span className="block">Drvo pamti</span> <span className="t-serif-italic block text-sand md:pl-[1.2em]">svjetlo, korak i vrijeme.</span>
+          </Split></h2>
         </div>
 
         <div className="grid-12 mt-16 md:mt-24">

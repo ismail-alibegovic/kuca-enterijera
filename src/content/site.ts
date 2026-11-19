@@ -57,13 +57,6 @@ export const site = {
     claimedOnLegacySite: ["ISO 9001:2008", "FSC", "ISO"],
   },
 
-  /**
-   * Brand presentation switch.
-   *  - "proposal": modernised logo treatment (src/components/brand/Logo.tsx, public/brand/proposal)
-   *  - "original": the existing logo (public/brand/original/ke-logo.png, 233×60 px raster)
-   * The original asset is preserved untouched. Switching back is this one line.
-   */
-  brandLogo: "proposal" as "proposal" | "original",
 
   pendingVerification: [
     "Radno vrijeme salona",

@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { manufacturers } from "@/content/catalog";
+import { Split } from "@/components/motion/Split";
 
 export function Partners({ index, showText = true }: { index?: string; showText?: boolean }) {
   const withLogo = manufacturers.filter((m) => m.logo);
@@ -13,9 +14,9 @@ export function Partners({ index, showText = true }: { index?: string; showText?
           <div className="col-span-4 md:col-span-3">
             <SectionLabel index={index}>Proizvođači</SectionLabel>
           </div>
-          <h2 id="partneri-title" className="t-h2 col-span-4 md:col-span-6" suppressHydrationWarning data-reveal="up">
+          <h2 id="partneri-title" className="t-h2 col-span-4 md:col-span-6" suppressHydrationWarning data-split=""><Split>
             Samo provjereni proizvođači, <span className="t-serif-italic">svjetski i domaći.</span>
-          </h2>
+          </Split></h2>
         </div>
 
         <ul className="mt-14 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-7" aria-label="Proizvođači s logotipom">

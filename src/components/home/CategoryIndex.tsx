@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { categories, categoryHref, products, productsInCategory } from "@/content/catalog";
 import { media } from "@/content/media";
+import { Split } from "@/components/motion/Split";
 
 /**
  * Typographic index of collections with a sticky preview that changes on hover/focus (desktop).
@@ -18,13 +19,13 @@ export function CategoryIndex() {
         <div className="grid-12 items-end border-b border-ink pb-6">
           <p className="t-label col-span-4 mb-6 flex items-center gap-3 md:col-span-3 md:mb-0" suppressHydrationWarning data-reveal="fade">
             <span className="t-index tracking-normal text-mute">Nº 03</span>
-            <span aria-hidden className="h-px w-8 bg-current opacity-40" />
+            <span aria-hidden className="h-1.5 w-1.5 bg-roof" />
             Kolekcije
           </p>
-          <h2 id="kolekcije-title" className="t-display col-span-4 md:col-span-6 md:col-start-4" suppressHydrationWarning data-reveal="up">
-            Materijali <span className="t-serif-italic">u glavnoj ulozi</span>
-          </h2>
-          <p className="t-index col-span-4 mt-4 text-mute md:col-span-3 md:mt-0 md:text-right">{String(categories.length).padStart(2, "0")} kolekcija · {String(products.length).padStart(2, "0")} linija proizvoda</p>
+          <h2 id="kolekcije-title" className="t-display col-span-4 md:col-span-7 md:col-start-4" suppressHydrationWarning data-split=""><Split>
+            <span className="block">Materijali</span> <span className="t-serif-italic block md:pl-[0.9em]">u glavnoj ulozi.</span>
+          </Split></h2>
+          <p className="t-index col-span-4 mt-4 text-mute md:col-span-2 md:col-start-11 md:mt-0 md:text-right">{String(categories.length).padStart(2, "0")} kolekcija · {String(products.length).padStart(2, "0")} linija proizvoda</p>
         </div>
 
         <div className="grid-12">

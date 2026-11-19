@@ -1,7 +1,9 @@
 import type { CSSProperties, ElementType, ReactNode } from "react";
+import { Split } from "@/components/motion/Split";
 
 /**
- * Headline split into masked lines that rise into place. Pass each line as an array item.
+ * Display heading set line by line. The motion system splits it into words that rise from behind
+ * their own baseline (`data-split`); without JavaScript or with reduced motion it renders as plain text.
  */
 export function Lines({
   as: Tag = "h2",
@@ -17,12 +19,14 @@ export function Lines({
   id?: string;
 }) {
   return (
-    <Tag id={id} className={className} suppressHydrationWarning data-reveal="lines" style={{ "--d": delay } as CSSProperties}>
-      {lines.map((l, i) => (
-        <span key={i} className="line">
-          <span style={{ "--i": i } as CSSProperties}>{l}</span>
-        </span>
-      ))}
+    <Tag id={id} className={className} suppressHydrationWarning data-split="" style={{ "--d": delay } as CSSProperties}>
+      <Split>
+        {lines.map((l, i) => (
+          <span key={i} className="block">
+            {l}
+          </span>
+        ))}
+      </Split>
     </Tag>
   );
 }
