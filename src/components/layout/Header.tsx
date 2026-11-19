@@ -103,7 +103,7 @@ export function Header() {
             scrolled || panelOpen ? "border-b border-line" : "border-b border-transparent"
           }`}
         >
-          <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
+          <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6 pt-[env(safe-area-inset-top,0px)]">
             <Link ref={logoRef} href="/" className="logo-intro relative z-10 -my-2 py-2" aria-label="Kuća Enterijera, početna stranica">
               <Logo className="h-7 w-auto md:h-9" />
             </Link>
@@ -152,7 +152,7 @@ export function Header() {
               </Link>
               <button
                 type="button"
-                className="t-label -mr-2 flex items-center gap-3 p-2 text-[0.7rem] lg:hidden"
+                className="t-label -mr-2 flex min-h-11 items-center gap-3 px-2 text-[0.7rem] lg:hidden"
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
                 onClick={() => setMenuOpen(true)}

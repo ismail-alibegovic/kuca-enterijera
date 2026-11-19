@@ -20,7 +20,7 @@ const slides: HeroSlide[] = [
  */
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative">
+    <section aria-labelledby="hero-title" className="relative touch-pan-y">
       <div className="relative h-[calc(100svh-var(--header-h))] min-h-[36rem] overflow-hidden">
         <HeroStage slides={slides} />
 

@@ -47,15 +47,15 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
       aria-modal="true"
       aria-label="Meni"
       inert={!open}
-      className={`fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-paper transition-[clip-path] duration-[900ms] ease-[var(--ease-curtain)] lg:hidden ${
+      className={`fixed inset-0 z-[60] flex flex-col overflow-y-auto overscroll-contain bg-paper transition-[clip-path] duration-[900ms] ease-[var(--ease-curtain)] lg:hidden ${
         open ? "[clip-path:inset(0_0_0_0)]" : "pointer-events-none [clip-path:inset(0_0_100%_0)]"
       }`}
     >
-      <div className="shell flex h-[var(--header-h)] shrink-0 items-center justify-between border-b border-line">
+      <div className="shell flex h-[var(--header-h)] shrink-0 items-center justify-between border-b border-line pt-[env(safe-area-inset-top,0px)]">
         <Link href="/" onNavigate={onClose}>
           <Logo />
         </Link>
-        <button ref={closeRef} type="button" onClick={onClose} className="t-label -mr-2 flex items-center gap-3 p-2 text-[0.7rem]">
+        <button ref={closeRef} type="button" onClick={onClose} className="t-label -mr-2 flex min-h-11 items-center gap-3 px-2 text-[0.7rem]">
           Zatvori <span aria-hidden className="text-lg leading-none">×</span>
         </button>
       </div>
@@ -82,7 +82,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
         <ul className="mt-8 flex flex-col gap-1">
           {nav.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} onNavigate={onClose} className="t-h3 inline-block py-1.5">
+              <Link href={item.href} onNavigate={onClose} className="t-h3 inline-block py-2.5">
                 {item.label}
               </Link>
             </li>

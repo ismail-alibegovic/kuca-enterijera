@@ -204,6 +204,42 @@ export function HeroStage({ slides }: { slides: HeroSlide[] }) {
     };
   }, [reduced, sync]);
 
+  // Swipe: a deliberate horizontal drag on touch/pen changes the photograph. The section has
+  // `touch-action: pan-y`, so vertical scrolling stays with the browser.
+  useEffect(() => {
+    const section = (root.current?.closest("section") as HTMLElement | null) ?? root.current;
+    if (!section) return;
+    let start: { x: number; y: number; id: number } | null = null;
+    const down = (e: PointerEvent) => {
+      if (e.pointerType === "mouse") return;
+      start = { x: e.clientX, y: e.clientY, id: e.pointerId };
+      hold.current.hover = true;
+      sync();
+    };
+    const release = () => {
+      start = null;
+      hold.current.hover = false;
+      sync();
+    };
+    const up = (e: PointerEvent) => {
+      if (!start || e.pointerId !== start.id) return;
+      const dx = e.clientX - start.x;
+      const dy = e.clientY - start.y;
+      release();
+      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      const n = slides.length;
+      go((activeRef.current + (dx < 0 ? 1 : n - 1)) % n);
+    };
+    section.addEventListener("pointerdown", down, { passive: true });
+    section.addEventListener("pointerup", up, { passive: true });
+    section.addEventListener("pointercancel", release, { passive: true });
+    return () => {
+      section.removeEventListener("pointerdown", down);
+      section.removeEventListener("pointerup", up);
+      section.removeEventListener("pointercancel", release);
+    };
+  }, [go, sync, slides.length]);
+
   const current = slides[active];
 
   return (

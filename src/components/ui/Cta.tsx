@@ -5,13 +5,13 @@ type Variant = "solid" | "line" | "solid-inverse" | "outline" | "outline-inverse
 
 const styles: Record<Variant, string> = {
   solid:
-    "bg-ink text-paper hover:bg-sand px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500",
+    "bg-ink text-paper hover:bg-sand px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500 active:scale-[0.98]",
   "solid-inverse":
-    "bg-paper text-ink hover:bg-sand px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500",
+    "bg-paper text-ink hover:bg-sand px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500 active:scale-[0.98]",
   outline:
-    "border border-ink/80 text-ink hover:bg-ink hover:text-paper px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500",
+    "border border-ink/80 text-ink hover:bg-ink hover:text-paper px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500 active:scale-[0.98]",
   "outline-inverse":
-    "border border-paper/60 text-paper hover:bg-paper hover:text-ink px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500",
+    "border border-paper/60 text-paper hover:bg-paper hover:text-ink px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500 active:scale-[0.98]",
   line: "link-line inline-flex items-center gap-3 py-2",
 };
 

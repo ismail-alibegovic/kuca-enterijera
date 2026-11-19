@@ -36,8 +36,13 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#121211",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
+  // Paint under the notch / home indicator; env(safe-area-inset-*) pads content back out.
+  viewportFit: "cover",
+  // The software keyboard shrinks the layout viewport on Android as it already does on iOS.
+  interactiveWidget: "resizes-content",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

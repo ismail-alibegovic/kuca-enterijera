@@ -86,7 +86,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="shell flex flex-col gap-3 py-6 text-paper/55 max-md:pb-24 md:flex-row md:items-center md:justify-between">
+      <div className="shell flex flex-col gap-3 py-6 text-paper/55 max-md:pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:flex-row md:items-center md:justify-between">
         <p className="t-small">© {site.copyrightYear} Kuća Enterijera · Parketni centar Sarajevo · {fullAddress}</p>
         <p className="t-small flex gap-5">
           <Link href="/napomene" className="hover:text-paper">

@@ -36,7 +36,7 @@
 :root {
   --gutter: clamp(1.25rem, 3.6vw, 3.5rem);
   --col-gap: clamp(0.75rem, 1.6vw, 1.5rem);
-  --header-h: 4.5rem;
+  --header-h: calc(4.5rem + env(safe-area-inset-top, 0px));
   --dur-reveal: 1100ms;
   color-scheme: dark;
 }
@@ -55,6 +55,7 @@
    ---------------------------------------------------------------------------------------------- */
 
 html {
+  -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   scroll-padding-top: calc(var(--header-h) + 1rem);
@@ -69,6 +70,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern";
+}
+
+/* Platform layer: the tells that make a site feel like a website on a phone. */
+button,
+a,
+[role="button"],
+summary,
+select,
+label {
+  touch-action: manipulation;
+}
+/* Controls are not content: no long-press text selection or callout. Body copy stays selectable. */
+button,
+[role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+/* Press feedback on touch, instant on pointer-down (hover is gated elsewhere behind (hover: hover)). */
+@media (hover: none) {
+  a[href]:active,
+  button:active {
+    opacity: 0.72;
+  }
+}
+/* Touch targets: footer links are small text, give them a 44px-ish hit area on coarse pointers. */
+@media (pointer: coarse) {
+  footer li > a {
+    display: inline-block;
+    padding-block: 0.5rem;
+  }
+  /* Small inline links keep their look; an invisible pseudo-element grows the hit area to ~44px. */
+  .link-line,
+  a[href^="tel:"],
+  a[href^="mailto:"],
+  nav[aria-label="Breadcrumb"] a,
+  nav[aria-label="Putanja"] a {
+    position: relative;
+  }
+  .link-line::after,
+  a[href^="tel:"]::after,
+  a[href^="mailto:"]::after,
+  nav[aria-label="Breadcrumb"] a::after,
+  nav[aria-label="Putanja"] a::after {
+    content: "";
+    position: absolute;
+    inset: -0.7rem -0.4rem;
+  }
 }
 
 ::selection {
@@ -91,7 +140,8 @@ body {
 
 @utility shell {
   width: 100%;
-  padding-inline: var(--gutter);
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
   margin-inline: auto;
   max-width: 120rem;
 }
@@ -437,7 +487,7 @@ body::after {
   opacity: 0.07;
   mix-blend-mode: overlay;
 }
-@media print {
+@media print, (pointer: coarse) {
   body::after {
     display: none;
   }
