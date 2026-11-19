@@ -110,7 +110,7 @@ export default async function ProductPage({ params }: PageProps<"/kolekcije/[kat
               {makers.length ? (
                 <div className="mt-8 flex items-center gap-4">
                   {makers.map((m) =>
-                    m.logo ? <Image key={m.slug} src={m.logo.src} alt={m.name} width={m.logo.width} height={m.logo.height} className="h-10 w-auto" /> : null,
+                    m.logo ? <Image key={m.slug} src={m.logo.src} alt={m.name} width={m.logo.width} height={m.logo.height} className="h-10 w-auto opacity-70 invert" /> : null,
                   )}
                 </div>
               ) : null}

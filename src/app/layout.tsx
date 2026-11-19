@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Newsreader } from "next/font/google";
+import { Instrument_Sans, Montserrat } from "next/font/google";
 import { MotionRoot } from "@/components/motion/MotionRoot";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -16,11 +16,10 @@ const instrument = Instrument_Sans({
   display: "swap",
 });
 
-const newsreader = Newsreader({
+const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-  variable: "--font-newsreader",
+  weight: ["200", "300", "400"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -36,14 +35,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f0e8",
+  themeColor: "#121211",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="bs" className={`${instrument.variable} ${newsreader.variable}`} suppressHydrationWarning>
+    <html lang="bs" className={`${instrument.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <head>
         {/* Reveal states apply only when JS runs. If the motion system has not started within 3 s
             (slow network, blocked script), html.motion-off shows everything as static content. */}

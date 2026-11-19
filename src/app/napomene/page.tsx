@@ -24,8 +24,8 @@ export default function NotesPage() {
           cijene, radno vrijeme), izostavili smo ga umjesto da ga pretpostavljamo.
         </p>
         <p>
-          Fotografije prostora preuzete su s postojeće web stranice kuca-enterijera.ba. Prije objave ih treba zamijeniti autentičnim fotografijama
-          proizvoda, salona i projekata ili potvrditi pravo korištenja.
+          Fotografije prostora su ilustrativne fotografije s Unsplasha (Unsplash License), ujednačene zajedničkom obradom boja. Ne prikazuju proizvode,
+          salon ni projekte Kuće Enterijera i trebaju se zamijeniti autentičnim fotografijama čim budu dostupne.
         </p>
         <p>
           Logo Kuće Enterijera je vektorski precrtan s originalne slike na postojećoj web stranici kako bi bio oštar na svim ekranima. Boje i
@@ -51,11 +51,12 @@ export default function NotesPage() {
             {entries.map(([k, m]) => (
               <tr key={k} className="border-b border-line align-top">
                 <td className="py-3 pr-4">{m.alt}</td>
-                <td className="py-3 pr-4">{m.provenance === "illustrative" ? "Ilustracija" : m.provenance === "legacy" ? "Postojeća web stranica" : m.provenance === "company" ? "Kuća Enterijera" : "Proizvođač"}</td>
+                <td className="py-3 pr-4">{m.provenance === "illustrative" ? "Ilustracija (Unsplash)" : m.provenance === "company" ? "Kuća Enterijera" : "Proizvođač"}</td>
                 <td className="py-3">
                   <a href={m.source} className="link-line break-all" target="_blank" rel="noreferrer">
                     {m.source.replace("https://", "")}
                   </a>
+                  <span className="block text-mute">{m.credit}</span>
                   <span className="block text-mute">{m.license}</span>
                 </td>
               </tr>

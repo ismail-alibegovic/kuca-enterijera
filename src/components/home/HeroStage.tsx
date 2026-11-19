@@ -154,14 +154,16 @@ export function HeroStage({ slides }: { slides: HeroSlide[] }) {
 
   // Pointer drift (fine pointers only) and a scrubbed sink as the hero scrolls away.
   useEffect(() => {
-    const el = root.current;
+    const stage = root.current;
     const target = inner.current;
-    if (!el || !target || reduced) return;
+    if (!stage || !target || reduced) return;
+    // Text sits over the photograph, so the whole hero section is the pointer surface.
+    const el = (stage.closest("section") as HTMLElement | null) ?? stage;
     gsap.registerPlugin(ScrollTrigger);
     const st = gsap.fromTo(
       target,
       { yPercent: 0 },
-      { yPercent: 9, ease: "none", scrollTrigger: { trigger: el, start: "top top+=80", end: "bottom top", scrub: true } },
+      { yPercent: 9, ease: "none", scrollTrigger: { trigger: stage, start: "top top+=80", end: "bottom top", scrub: true } },
     );
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     if (!fine) return () => st.scrollTrigger?.kill();
@@ -205,13 +207,13 @@ export function HeroStage({ slides }: { slides: HeroSlide[] }) {
   const current = slides[active];
 
   return (
-    <div className="relative flex min-h-0 flex-1 flex-col">
+    <div className="absolute inset-0">
       <div
         ref={root}
         role="region"
         aria-roledescription="galerija"
         aria-label="Prostori s našim podovima"
-        className="hero-stage relative min-h-0 flex-1 overflow-hidden bg-paper-2"
+        className="hero-stage absolute inset-0 overflow-hidden bg-paper-2"
       >
         <div ref={inner} className="absolute inset-x-0 -inset-y-[6%] will-change-transform">
           {slides.map((s, i) => {
@@ -258,13 +260,14 @@ export function HeroStage({ slides }: { slides: HeroSlide[] }) {
         {/* Plank joints over the photograph, aligned with the planks. */}
         <div aria-hidden className="pointer-events-none absolute inset-0 z-[3] grid grid-cols-6">
           {Array.from({ length: PLANKS }).map((_, p) => (
-            <span key={p} className={p ? "border-l border-paper/25" : ""} />
+            <span key={p} className={p ? "border-l border-white/[0.09]" : ""} />
           ))}
         </div>
       </div>
 
-      {/* Caption rail under the photograph */}
-      <div className="relative z-[4] flex items-center justify-between gap-6 pt-3">
+      {/* Caption rail over the foot of the photograph */}
+      <div className="absolute inset-x-0 bottom-0 z-[6]">
+      <div className="shell flex items-center justify-between gap-6 border-t border-white/15 py-2 md:py-3">
         <p className="t-small min-w-0 truncate text-ink/80">
           <span className="t-index mr-3 text-mute">{String(active + 1).padStart(2, "0")}</span>
           <span className="max-sm:hidden">{current.caption}</span>
@@ -307,6 +310,7 @@ export function HeroStage({ slides }: { slides: HeroSlide[] }) {
             </button>
           )}
         </div>
+      </div>
       </div>
     </div>
   );

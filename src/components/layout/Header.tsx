@@ -147,7 +147,7 @@ export function Header() {
               <a href={primaryPhone.href} className="t-index hidden text-ink/80 hover:text-ink xl:inline">
                 {primaryPhone.display}
               </a>
-              <Link href="/kontakt#upit" className="t-label hidden bg-ink px-4 py-3 text-[0.68rem] text-paper transition-colors duration-500 hover:bg-charcoal md:inline-flex">
+              <Link href="/kontakt#upit" className="t-label hidden bg-ink px-4 py-3 text-[0.68rem] text-paper transition-colors duration-500 hover:bg-sand md:inline-flex">
                 Zatražite ponudu
               </Link>
               <button

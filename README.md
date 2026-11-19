@@ -35,7 +35,8 @@ Set `NEXT_PUBLIC_SITE_URL` for canonical/OG URLs (default `https://kuca-enterije
 
 ## Before production
 
-- Replace illustrative photos (Unsplash) with authentic product, showroom and project photography.
+- Replace illustrative photos (Unsplash, graded with `scripts/grade-photos.py`) with authentic product, showroom and
+  project photography; run new photos through the same script so they match the look.
 - Confirm the showroom address (Hiseta 19 vs Alipašina 55), opening hours, certificates and social profiles.
 - Logo: the site uses a vector redraw of the original logo (`public/brand`). If the client has the designer's vector source, swap it in.
 - Configure inquiry delivery (see above).

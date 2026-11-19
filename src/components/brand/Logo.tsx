@@ -18,7 +18,7 @@ export function LogoSvg({
   title?: string | null;
   markOnly?: boolean;
 }) {
-  const ink = inverse ? "var(--color-paper)" : BRAND.ink;
+  const ink = inverse ? "var(--color-paper)" : "var(--color-ink)";
   return (
     <svg
       viewBox={markOnly ? "3.6 14.2 35 29" : "3.5 13.8 223.6 30"}

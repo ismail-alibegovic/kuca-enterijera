@@ -43,8 +43,8 @@ export function CategoryIndex() {
                     <span className="t-index self-start pt-2 text-mute">{c.index}</span>
                     <span>
                       <span
-                        className={`block text-[clamp(1.75rem,3.6vw,3.6rem)] leading-[1] tracking-[-0.035em] transition-[transform,color] duration-700 ease-[var(--ease-architect)] md:group-hover:translate-x-3 ${
-                          active === i ? "md:text-ink" : "md:text-ink/45"
+                        className={`block font-display text-[clamp(1.35rem,2.7vw,2.75rem)] font-light uppercase leading-[1.05] tracking-[0.03em] transition-[transform,color] duration-700 ease-[var(--ease-architect)] md:group-hover:translate-x-3 ${
+                          active === i ? "md:text-ink" : "md:text-ink/35"
                         }`}
                       >
                         {c.name}

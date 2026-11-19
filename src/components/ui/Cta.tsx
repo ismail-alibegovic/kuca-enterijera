@@ -5,7 +5,7 @@ type Variant = "solid" | "line" | "solid-inverse" | "outline" | "outline-inverse
 
 const styles: Record<Variant, string> = {
   solid:
-    "bg-ink text-paper hover:bg-charcoal px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500",
+    "bg-ink text-paper hover:bg-sand px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500",
   "solid-inverse":
     "bg-paper text-ink hover:bg-sand px-6 py-4 min-h-12 inline-flex items-center justify-between gap-6 transition-colors duration-500",
   outline:

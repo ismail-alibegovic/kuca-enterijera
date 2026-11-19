@@ -246,7 +246,7 @@ export function InquiryForm() {
         <button
           type="submit"
           disabled={status.kind === "sending"}
-          className="t-label inline-flex min-h-14 items-center justify-between gap-10 bg-ink px-7 text-[0.72rem] text-paper transition-colors duration-500 hover:bg-charcoal disabled:opacity-60"
+          className="t-label inline-flex min-h-14 items-center justify-between gap-10 bg-ink px-7 text-[0.72rem] text-paper transition-colors duration-500 hover:bg-sand disabled:opacity-60"
         >
           {status.kind === "sending" ? "Šaljem…" : data.type === "ponuda" ? "Pošaljite zahtjev" : "Pošaljite upit"}
           <span aria-hidden className="arrow">→</span>

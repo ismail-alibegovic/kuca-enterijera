@@ -35,7 +35,7 @@ export function Partners({ index, showText = true }: { index?: string; showText?
                   alt={m.name}
                   width={l.width}
                   height={l.height}
-                  className="w-auto opacity-70 transition-opacity duration-500 group-hover:opacity-100"
+                  className="w-auto opacity-55 invert transition-opacity duration-500 group-hover:opacity-95"
                   style={{ height: `${h}px`, maxWidth: "80%" }}
                 />
                 {m.segment ? (

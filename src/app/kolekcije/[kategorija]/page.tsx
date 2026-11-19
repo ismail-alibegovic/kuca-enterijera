@@ -221,7 +221,7 @@ export default async function CategoryPage({ params }: PageProps<"/kolekcije/[ka
             {makers.map((m) => (
               <div key={m.slug} className="col-span-4 flex items-center gap-8 md:col-span-8 md:col-start-5">
                 {m.logo ? (
-                  <Image src={m.logo.src} alt={m.name} width={m.logo.width} height={m.logo.height} className="h-14 w-auto" />
+                  <Image src={m.logo.src} alt={m.name} width={m.logo.width} height={m.logo.height} className="h-14 w-auto opacity-70 invert" />
                 ) : null}
                 <div>
                   <h2 id="proizvodjac-title" className="t-h3">

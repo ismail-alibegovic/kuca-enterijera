@@ -1,6 +1,19 @@
 # Art direction: "Kuća od poda"
 
-_Nov 2026 redesign pass._
+_Nov 2026 redesign pass. Second pass: dark, low-key brand-presentation look requested by the client
+(reference: a moodboard of dark kitchen brand boards with wide-tracked capitals, hairline grids over photographs,
+outlined tags, a vertical wordmark and light spec cards)._
+
+**Dark pass, in short.** Graphite page (`#121211`), warm light print (`#ebe5db`), sand accents instead of the
+italic serif. Display type is Montserrat Light in tracked capitals; body stays Instrument Sans. The hero is a
+full-bleed photograph with the message over its darkest side and the logo standing vertically on the left edge.
+"Ko smo mi" is a brand board: photograph, hairline grid, cells with outlined tags and a solid panel. Sample boards
+carry light spec cards. Inverse chapters (`.on-dark`) redefine the tokens so every utility keeps its meaning.
+
+**Photography.** All photographs are Unsplash (Unsplash License), chosen for low-key, warm interiors and wood,
+then graded to one look with `scripts/grade-photos.py` (exposure normalised to a low median, warm shadows and
+cream highlights, 22% desaturation, matte blacks, soft vignette). Credits are in `src/content/media.ts` and on
+`/napomene`. They are mood imagery, labelled "Ilustracija", never presented as company work.
 
 **Visual thesis.** The client's own logo already holds the idea: a house outline with a leaf growing from its
 floor, and a wordmark standing on a floor line. The site extends that line. Headlines stand on a heavy ink rule,
@@ -8,10 +21,10 @@ photographs are laid like boards, and the logo returns at architectural scale in
 
 - **Logo.** The original logo (orange roof, green house and leaf, `#333` wordmark on a rule), redrawn as a vector
   from the client's PNG (`public/brand`, `src/components/brand`). The PNG is preserved untouched.
-- **Hero focal asset.** Interior photographs from the client's current website on a wide stage. They change in six
+- **Hero focal asset.** Graded interior photographs on a full-bleed stage. They change in six
   vertical planks that rise from the floor line, left to right, which is how a floor is actually laid.
-- **Type.** Instrument Sans (structure, information) + Newsreader italic (material, voice).
-- **Colour.** Warm paper, ink, oak. The logo's roof orange appears only as small section markers; the leaf green
+- **Type.** Montserrat Light capitals (display) + Instrument Sans (text, labels).
+- **Colour.** Graphite, warm light, sand. The logo's roof orange appears only as small section markers; the leaf green
   stays in the logo. Colour otherwise comes from the photographs.
 - **Section sequence.** Hero → statement → collections index → sample boards → material story (dark chapter) →
   inspiration → manufacturers → showroom → footer with the full-width logo.
@@ -23,8 +36,7 @@ photographs are laid like boards, and the logo returns at architectural scale in
   by the GSAP ticker and feeds ScrollTrigger. Disabled under `prefers-reduced-motion`.
 - **Three.js.** Not used. The one transition that could justify a shader (the hero image change) is expressed
   better and more cheaply as clip-path planks, and nothing else needs spatial depth.
-- **Assets.** No illustrations. A 128 px generated paper-grain tile (`public/textures/grain.png`). Photographs and
-  their provenance are listed in `src/content/media.ts` and on `/napomene`.
+- **Assets.** No illustrations. A 128 px generated paper-grain tile (`public/textures/grain.png`). 
 
 **Accessibility and fallbacks.** Split headings are split on the server (`components/motion/Split.tsx`): an unsplit
 `sr-only` copy carries the accessible name and the split copy is `aria-hidden`. Hidden start states exist only
